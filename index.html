@@ -2,10 +2,11 @@
 <html lang="ru"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Свадебная фотосессия и церемония с аркой в Муйне</title>
-<meta name="description" content="Церемонии и фотосессии у моря в Муйне, Вьетнам. Соберите свой день за минуту и отправьте заявку в мессенджер.">
-<meta property="og:title" content="Свадебная фотосессия и церемония с аркой в Муйне"><meta property="og:description" content="Соберите свой день: дата, гости, формат, бюджет."><meta property="og:type" content="website"><meta property="og:image" content="img/og.jpg">
+<meta name="description" content="Церемонии и фотосессии на пляже и закрытый вечер у бассейна в Муйне, Вьетнам. Соберите свой день и отправьте заявку в мессенджер.">
+<meta property="og:title" content="Свадебная фотосессия и церемония с аркой в Муйне"><meta property="og:description" content="Пляж или закрытый вечер у бассейна: соберите свой день."><meta property="og:type" content="website"><meta property="og:image" content="img/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
 <style>
+
 :root{--sand:#E9DFD0;--sand2:#F3EEE6;--terra:#F2A900;--or:#E8760C;--ortx:#B85200;--sea:#1B3F52;--white:#FCFAF6;--ink:#1c2630;--r:14px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;font:16px/1.65 Montserrat,system-ui,sans-serif;color:var(--ink);background:var(--white);padding-bottom:72px}
@@ -45,137 +46,277 @@ details{margin:12px 0}summary{cursor:pointer;font-weight:700;min-height:44px;dis
 .fin{background:var(--sea);color:#fff;text-align:center;border-radius:var(--r)}.fin h2{color:#fff}.fin .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
 footer{padding:32px 20px;text-align:center;font-size:14px;color:#556}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 16px;background:#fbf6eef0;backdrop-filter:blur(6px);text-align:center;box-shadow:0 -2px 12px #0002}.sticky .btn{width:100%;max-width:420px}
-#chatBtn{position:fixed;right:16px;bottom:86px;z-index:25;min-height:48px}
-#chat{position:fixed;right:16px;bottom:86px;z-index:26;width:min(360px,calc(100vw - 32px));height:min(520px,70vh);background:#fff;border-radius:var(--r);box-shadow:0 8px 40px #0005;display:none;flex-direction:column;overflow:hidden}
+#chatBtn{position:fixed;right:16px;bottom:calc(var(--sh,72px) + 14px);z-index:25;min-height:48px}
+#chat{position:fixed;right:16px;bottom:calc(var(--sh,72px) + 14px);z-index:26;width:min(360px,calc(100vw - 32px));height:min(520px,70vh);background:#fff;border-radius:var(--r);box-shadow:0 8px 40px #0005;display:none;flex-direction:column;overflow:hidden}
 #chat.open{display:flex}#chat header{background:var(--sea);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;font-weight:700}#chat header button{background:none;border:0;color:#fff;font-size:22px;cursor:pointer;min-width:44px}
 #msgs{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px;font-size:15px}.m{max-width:85%;padding:8px 12px;border-radius:12px;background:var(--sand2);white-space:pre-line}.m.u{align-self:flex-end;background:var(--sea);color:#fff}
 .qr{display:flex;gap:6px;flex-wrap:wrap;padding:6px 12px}.qr button{border:1px solid var(--sea);background:#fff;color:var(--sea);border-radius:99px;padding:6px 12px;min-height:36px;cursor:pointer;font:600 13px Montserrat}
 #chat form{display:flex;border-top:1px solid #ddd}#chat input{flex:1;border:0;padding:12px;font:16px Montserrat}#chat form button{border:0;background:var(--terra);color:#1B2A33;padding:0 16px;font-weight:700;cursor:pointer}
-@media(min-width:900px){.tr{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;margin:0;padding:24px 0 8px}.card{flex:none}.sticky{display:none}body{padding-bottom:0}#chatBtn,#chat{bottom:20px}}
+@media(min-width:900px){.tr{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;margin:0;padding:24px 0 8px}.card{flex:none}.sticky:not(.sel){display:none}body{padding-bottom:0}#chatBtn,#chat{bottom:calc(var(--sh,0px) + 20px)}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-</style></head><body>
+
+/* ---- v3: локации, допы, панель ---- */
+body[data-loc=beach] .poolonly{display:none}
+.free[hidden]{display:none}
+.locsw{position:absolute;top:16px;left:16px;z-index:3;display:flex;background:#0007;border-radius:99px;padding:3px}
+.locsw button{min-height:40px;padding:0 16px;border:0;border-radius:99px;background:transparent;color:#fff;font:600 14px Montserrat,sans-serif;cursor:pointer}
+.locsw .on{background:#fff;color:var(--sea)}
+.poolph{display:none;position:absolute;inset:0;background:linear-gradient(160deg,#1B3F52,#0f2a36) center/cover no-repeat}
+.poolph span{position:absolute;right:16px;top:70px;color:#fffc;font-size:12px;background:#0005;padding:4px 10px;border-radius:8px}
+body[data-loc=pool] .hero video{display:none}body[data-loc=pool] .poolph{display:block}
+.meta{font-size:14px;color:#5b6770;margin:0 0 8px}
+.gt{margin:40px 0 16px;font-size:28px}
+.ag{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ac{position:relative;background:#fff;border:1px solid #e2dccf;border-radius:var(--r);padding:28px 26px;display:flex;flex-direction:column;gap:10px}
+.tg{display:flex;flex-direction:column;gap:8px;width:100%;background:none;border:0;padding:0;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.tg h4{margin:4px 0 0;font:700 24px Cormorant Garamond,Georgia,serif;color:var(--sea);padding-right:34px}.tg p{margin:0;font-size:15px}.tg small{color:#5b6770}
+.ac.on{border:2px solid var(--or);background:#FFF8E6}.ac.off{opacity:.55}.ac.off .tg{cursor:not-allowed}
+.ck{position:absolute;top:22px;right:22px;width:24px;height:24px;border:2px solid var(--sea);border-radius:6px;display:grid;place-items:center}
+.ac.on .ck{background:var(--terra);border-color:var(--or)}.ac.on .ck:after{content:"✓";font-size:14px;font-weight:700;color:#1B2A33}
+.ic svg{width:36px;height:36px;stroke:var(--or);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.ap{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px}
+.pl b{color:var(--ortx);font-size:18px}.lnk{font-weight:700;color:var(--ortx);min-height:44px;display:inline-flex;align-items:center}
+.hint{background:#FFF1CC;border-radius:10px;padding:12px 16px;font-weight:600}
+.flow{padding-left:22px;display:grid;gap:10px}.flow li{padding-left:6px}
+#pg .ph{aspect-ratio:4/5}.cond ul{padding-left:20px;margin:8px 0}.cond li{margin:6px 0}
+.sticky .info{display:none}
+.sticky.sel{display:flex;gap:12px;align-items:center;justify-content:space-between;text-align:left}
+.sticky.sel .info{display:block;flex:1;font-size:14px;line-height:1.35}
+.sticky.sel .btn{width:auto;max-width:none;flex:none;padding:10px 18px;min-height:44px;font-size:14px}
+body.hasbar{padding-bottom:100px}
+@media(max-width:899px){.ag{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:599px){.ag{grid-template-columns:1fr}.sticky.sel{flex-direction:column;align-items:stretch}.sticky.sel .btn{width:100%}}
+</style></head><body data-loc="beach">
 <header class="hero" id="top">
-<!-- ВИДЕО: положите loop-ролик моря/рассвета в video/hero.mp4, постер img/hero.jpg (до 3 МБ) -->
+<!-- ВИДЕО ПЛЯЖА: video/hero.mp4, постер img/hero.jpg. Для бассейна: img/pool-hero.jpg (CONFIG.media.poolHero) -->
 <video muted loop playsinline autoplay preload="metadata" poster="img/hero.jpg" aria-hidden="true"><source src="video/hero.mp4" type="video/mp4"></video>
+<div class="poolph" id="poolph"><span data-i="poolph"></span></div>
+<div class="locsw" role="group" aria-label="Location" id="locsw"></div>
 <div class="lang" role="group" aria-label="Language" id="lang"></div>
-<div class="in"><h1 data-i="h1"></h1><p data-i="h1p"></p>
+<div class="in"><span class="free" id="freeTag" hidden></span><h1 data-i="h1"></h1><p id="h1p"></p>
 <div class="row"><a class="btn" href="#quiz" data-i="cta1"></a><a class="btn o" href="#final" data-i="cta2"></a></div></div></header>
 <main>
 <section id="quiz"><div class="quiz" aria-live="polite"><h2 data-i="quizT"></h2><div class="bar"><i id="bar"></i></div><div id="qbody"></div></div></section>
-<div class="band"><section id="tariffs"><h2 data-i="tarT"></h2><p data-i="tarP"></p><div class="tr" id="tr" tabindex="0" role="region" aria-label="Tariffs"></div></section></div>
-<section id="addons"><h2 data-i="addT"></h2><p data-i="addP"></p><div class="grid" id="addG"></div><p><a class="btn o" style="color:var(--sea)" href="#quiz" data-i="cta1"></a></p></section>
-<div class="band"><section id="how"><h2 data-i="howT"></h2><div class="grid" id="howG"></div></section></div>
-<section id="port"><h2 data-i="portT"></h2><div class="fl" id="pf"></div><div class="grid" id="pg"></div></section>
-<div class="band"><section id="rev"><h2 data-i="revT"></h2><div class="grid" id="rg"></div></section></div>
-<section id="cal"><h2 data-i="calT"></h2><p id="calP"></p><div class="cal" id="calG"></div></section>
-<div class="band"><section id="faq"><h2>FAQ</h2><div id="faqG"></div></section></div>
+<div class="band"><section id="tariffs"><h2 data-i="tarT"></h2><p id="tarP"></p><div class="tr" id="tr" tabindex="0" role="region" aria-label="Tariffs"></div><div class="box cond poolonly" id="cond"></div></section></div>
+<section id="addons"><h2 data-i="addT"></h2><p id="addP"></p><div id="addG"></div></section>
+<div class="band poolonly"><section id="flow"><h2 data-i="flowT"></h2><ol class="flow" id="flowL"></ol><p id="sunN"></p></section></div>
+<section id="how"><h2 data-i="howT"></h2><div class="grid" id="howG"></div></section>
+<div class="band"><section id="port"><h2 data-i="portT"></h2><div class="fl" id="pf"></div><div class="grid" id="pg"></div></section></div>
+<section id="rev"><h2 data-i="revT"></h2><div class="grid" id="rg"></div></section>
+<div class="band"><section id="cal"><h2 data-i="calT"></h2><p data-i="calP"></p><div class="cal" id="calG"></div></section></div>
+<section id="faq"><h2>FAQ</h2><div id="faqG"></div></section>
 <section id="final"><div class="fin" style="padding:48px 20px"><h2 data-i="finT"></h2><p id="summ"></p><div class="row" id="finB"></div></div></section>
 </main>
 <footer>© Muine Wedding · <span id="ftC"></span></footer>
-<div class="sticky"><a class="btn" href="#quiz" data-i="cta1"></a></div>
+<div class="sticky" id="stk"><div class="info" id="stkI"></div><a class="btn" id="stkB" href="#quiz"></a></div>
 <button class="btn" id="chatBtn" data-i="ask"></button>
 <aside id="chat" aria-label="Chat"><header><span data-i="ask"></span><button id="cx" aria-label="Close">×</button></header><div id="msgs" aria-live="polite"></div><div class="qr" id="qr"></div><form id="cf"><input id="ci" autocomplete="off" aria-label="Message"><button>OK</button></form></aside>
 <script>
 /* ============ CONFIG: правьте только здесь ============ */
 const CONFIG={
  contacts:{tgUser:"+79521234777",wa:"79521234777",zalo:"",phone:"+7 952 123-47-77"},
- endpoint:"FORM_ENDPOINT", // Formspree / Google Apps Script URL
- busy:["2026-11-07","2026-11-08","2026-11-21"], // ПРИМЕР: замените реальными занятыми датами YYYY-MM-DD
- budgets:[550,790,990,1500,Infinity,null], // верхняя граница; null = особая арка
+ endpoint:"FORM_ENDPOINT", // Formspree / Google Apps Script
+ prepayment:"[УТОЧНИТЬ]",
+ media:{poolHero:"img/pool-hero.jpg"}, // фото/видео-слот бассейна
+ busy:{beach:[],pool:[]},      // занятые даты "YYYY-MM-DD"
+ freeDates:{beach:[],pool:[]}, // свободные даты; пока пусто, счётчик «Свободно N дат» скрыт
+ sunsetByMonth:Object.fromEntries([...Array(12)].map((_,i)=>[i+1,"[УТОЧНИТЬ]"])), // ориентир 17:20–17:45
+ budgets:{beach:[550,790,990,1500,Infinity,null],pool:[1200,1700,2500,Infinity,null]},
+ poolMax:10,
  tariffs:[
- {id:"start",price:550,ru:{n:"Начало",s:"Идеальный старт для тех, кто хочет красивый символ.",a:"Лёгкий и доступный формат для создания главного воспоминания. Мы организуем камерную церемонию на уединённом пляже, где будете только вы, море и ваши клятвы. Никакой лишней суеты, только фокус на эмоциях.",i:["🌴 Локация: живописный муниципальный пляж (без толп туристов).","⛩ Декор: базовая арка, драпированная тканью, с качественной искусственной флористикой.","📸 Фото: церемония + портретная сессия у арки (1,5 часа).","🎙 Команда: русскоговорящий ведущий церемонии.","🎵 Атмосфера: музыкальное сопровождение (портативная система)."]},
+ {id:"start",loc:"beach",price:550,ru:{n:"Начало",s:"Идеальный старт для тех, кто хочет красивый символ.",a:"Лёгкий и доступный формат для создания главного воспоминания. Мы организуем камерную церемонию на уединённом пляже, где будете только вы, море и ваши клятвы. Никакой лишней суеты, только фокус на эмоциях.",i:["🌴 Локация: живописный муниципальный пляж (без толп туристов).","⛩ Декор: базовая арка, драпированная тканью, с качественной искусственной флористикой.","📸 Фото: церемония + портретная сессия у арки (1,5 часа).","🎙 Команда: русскоговорящий ведущий церемонии.","🎵 Атмосфера: музыкальное сопровождение (портативная система)."]},
   en:{n:"Start",s:"A perfect start for those who want a beautiful symbol.",a:"A light, affordable format for your main memory. We arrange an intimate ceremony on a secluded beach: just you, the sea and your vows. No extra fuss, only emotions.",i:["🌴 Location: scenic municipal beach (no tourist crowds).","⛩ Decor: basic fabric-draped arch with quality artificial flowers.","📸 Photo: ceremony + portrait session at the arch (1.5 hours).","🎙 Team: Russian-speaking ceremony host.","🎵 Atmosphere: music (portable sound system)."]}},
- {id:"main",price:790,pop:1,ru:{n:"Основной",s:"Наш самый популярный выбор: живые цветы и большая съёмка.",a:"Золотая середина и выбор большинства пар. Этот пакет включает всё, что нужно для идеальной «картинки»: стильную флористику, расширенную фотосессию и полную координацию дня. Вы получаете результат, достойный обложки журнала, по честной цене.",i:["🌺 Живая флористика: арка украшена композициями из свежих тропических цветов.","📸 Фото-макси: полная съёмка до 4 часов (сборы + церемония + закат на территории отеля/пальм).","🥂 Сервис: шампанское, бокалы, фруктовая тарелка и столик для росписи.","💍 Детали: букет невесты и бутоньерка из живых цветов.","📝 Координация: полный тайминг и контроль подрядчиков."]},
+ {id:"main",loc:"beach",price:790,pop:1,ru:{n:"Основной",s:"Наш самый популярный выбор: живые цветы и большая съёмка.",a:"Золотая середина и выбор большинства пар. Этот пакет включает всё, что нужно для идеальной «картинки»: стильную флористику, расширенную фотосессию и полную координацию дня. Вы получаете результат, достойный обложки журнала, по честной цене.",i:["🌺 Живая флористика: арка украшена композициями из свежих тропических цветов.","📸 Фото-макси: полная съёмка до 4 часов (сборы + церемония + закат на территории отеля/пальм).","🥂 Сервис: шампанское, бокалы, фруктовая тарелка и столик для росписи.","💍 Детали: букет невесты и бутоньерка из живых цветов.","📝 Координация: полный тайминг и контроль подрядчиков."]},
   en:{n:"Main",s:"Our most popular choice: live flowers and a big shoot.",a:"The golden mean and the choice of most couples. Everything for a perfect picture: stylish floristry, an extended photo shoot and full coordination of the day. A magazine-cover result at an honest price.",i:["🌺 Live floristry: arch decorated with fresh tropical flowers.","📸 Photo maxi: full shoot up to 4 hours (getting ready + ceremony + sunset at the hotel/palms).","🥂 Service: champagne, glasses, fruit plate and a signing table.","💍 Details: bridal bouquet and boutonniere of live flowers.","📝 Coordination: full timing and supplier control."]}}, /* TODO: название «Основной» подтвердить */
- {id:"gold",price:990,ru:{n:"Золотой Стандарт",s:"Безупречный стиль и включённый образ невесты.",a:"Пакет для тех, кто ценит качество и не хочет рисковать. Главное преимущество: мы уже включили в стоимость услуги профессионального стилиста. Вам не нужно искать мастеров в Азии: ваш макияж и причёска будут идеальны, а церемония продумана до мелочей.",i:["💄 Стилист: профессиональный макияж и причёска (выезд в ваш отель).","🌟 Всё из тарифа «Основной»: живые цветы, ведущий, шампанское.","📸 Фото-премиум: расширенная ретушь и помощь в позировании.","💒 Улучшенный декор: дополнительные элементы оформления прохода или зоны регистрации.","🧁 Комплимент: расширенный фуршет (пирожные или улучшенные фрукты)."]},
+ {id:"gold",loc:"beach",price:990,ru:{n:"Золотой Стандарт",s:"Безупречный стиль и включённый образ невесты.",a:"Пакет для тех, кто ценит качество и не хочет рисковать. Главное преимущество: мы уже включили в стоимость услуги профессионального стилиста. Вам не нужно искать мастеров в Азии: ваш макияж и причёска будут идеальны, а церемония продумана до мелочей.",i:["💄 Стилист: профессиональный макияж и причёска (выезд в ваш отель).","🌟 Всё из тарифа «Основной»: живые цветы, ведущий, шампанское.","📸 Фото-премиум: расширенная ретушь и помощь в позировании.","💒 Улучшенный декор: дополнительные элементы оформления прохода или зоны регистрации.","🧁 Комплимент: расширенный фуршет (пирожные или улучшенные фрукты)."]},
   en:{n:"Gold Standard",s:"Flawless style and the bride's look included.",a:"For those who value quality and don't want to risk. The main benefit: a professional stylist is already included. No need to look for masters in Asia: your makeup and hair will be perfect and the ceremony thought through.",i:["💄 Stylist: professional makeup and hair (at your hotel).","🌟 Everything from \"Main\": live flowers, host, champagne.","📸 Photo premium: extended retouching and posing help.","💒 Upgraded decor: extra elements for the aisle or registration area.","🧁 Compliment: extended buffet (pastries or upgraded fruit)."]}},
- {id:"arch",price:null,arch:1,ru:{n:"Арка Премиум",s:"Главный кадр — ваша арка.",a:"[СОСТАВ — клиент уточнит]",i:["[РАЗМЕР И КОНСТРУКЦИЯ АРКИ]","[ЦВЕТЫ И МАТЕРИАЛЫ]","[ЧАСЫ СЪЁМКИ]","[ЧТО ВЗЯТО ИЗ «ОСНОВНОЙ» / «ЗОЛОТОЙ СТАНДАРТ»]"]},
+ {id:"arch",loc:"beach",price:null,arch:1,ru:{n:"Арка Премиум",s:"Главный кадр — ваша арка.",a:"[СОСТАВ — клиент уточнит]",i:["[РАЗМЕР И КОНСТРУКЦИЯ АРКИ]","[ЦВЕТЫ И МАТЕРИАЛЫ]","[ЧАСЫ СЪЁМКИ]","[ЧТО ВЗЯТО ИЗ «ОСНОВНОЙ» / «ЗОЛОТОЙ СТАНДАРТ»]"]},
   en:{n:"Arch Premium",s:"Your arch is the main frame.",a:"[DETAILS — client to confirm]",i:["[ARCH SIZE AND STRUCTURE]","[FLOWERS AND MATERIALS]","[SHOOTING HOURS]","[WHAT IS TAKEN FROM \"MAIN\" / \"GOLD\"]"]}}, /* ПОЗИЦИЯ: цена между $790 и $1500; здесь стоит перед «Комфорт» */
- {id:"comfort",price:1500,ru:{n:"Комфорт (VIP)",s:"Максимальные возможности и свобода желаний.",a:"Это не просто пакет, это конструктор вашего идеального дня. Вы получаете полную свободу: в стоимость уже заложен бюджет на любые дополнительные услуги. Хотите видеоклип, джип-тур или ужин на пляже? Мы реализуем любой сценарий, чтобы вы чувствовали абсолютный комфорт.",i:["💎 Всё включено: база тарифа «Золотой Стандарт» (стилист, цветы, ведущий).","💰 Депозит $500: включён бюджет на выбор доп. услуг (видеограф / джип / дрон / ужин). Это бюджет на допы, а не предоплата за бронь.","🚘 Логистика: приоритетная организация трансфера и сложных маршрутов.","🥥 Песочная церемония: красивый ритуал объединения семей в подарок.","🕶 VIP-сопровождение: личный контроль организатора 24/7."]},
-  en:{n:"Comfort (VIP)",s:"Maximum possibilities and freedom of wishes.",a:"Not just a package but a builder of your perfect day. Full freedom: a budget for any extra services is already included. Want a video clip, jeep tour or beach dinner? We realize any scenario so you feel absolute comfort.",i:["💎 All inclusive: base of \"Gold Standard\" (stylist, flowers, host).","💰 $500 deposit: budget for extras (videographer / jeep / drone / dinner) included. It is an extras budget, not a booking prepayment.","🚘 Logistics: priority transfer and complex route organization.","🥥 Sand ceremony: a beautiful family-unity ritual as a gift.","🕶 VIP support: personal organizer control 24/7."]}}],
- addons:[["🚁","Дрон","Drone"],["🎥","Видеограф","Videographer"],["🚙","Джип-тур","Jeep tour"],["🍽","Ужин на пляже","Beach dinner"],["🎻","Живая музыка","Live music"],["⛵","Лодка","Boat"]],
- addPrice:"[ЦЕНА]",
- faq:[["Погода и план на дождь","Weather and rain plan","[ОТВЕТ: план на дождь]","[ANSWER: rain plan]"],["Ветер и жара","Wind and heat","[ОТВЕТ]","[ANSWER]"],["Разрешения","Permits","[ОТВЕТ]","[ANSWER]"],["Сроки подготовки","Lead time","[ОТВЕТ]","[ANSWER]"],["Оплата","Payment","[ОТВЕТ]","[ANSWER]"],["Предоплата","Prepayment","[ОТВЕТ]","[ANSWER]"]],
- portfolio:[["beach","Пляж","Beach","beach-dance"],["arch","Арки и цветы","Arches & flowers","arch-dip"],["hotel","Территория отеля","Hotel grounds","palms-dance"],["details","Детали","Details","champagne-toast"],["arch","Арки и цветы","Arches & flowers","arch-kiss"],["beach","Пляж","Beach","bouquet-portrait"],["details","Детали","Details","sand-ceremony"],["hotel","Территория отеля","Hotel grounds","palms-kiss"],["details","Детали","Details","rings-hands"],["arch","Арки и цветы","Arches & flowers","arch-eucalyptus"]], /* файлы лежат в img/; фильтры по дюнам и рыбацкой деревне добавятся, когда будут фото */
+ {id:"comfort",loc:"beach",price:1500,ru:{n:"Комфорт (VIP)",s:"Максимальные возможности и свобода желаний.",a:"Это не просто пакет, это конструктор вашего идеального дня. Вы получаете полную свободу: в стоимость уже заложен бюджет на любые дополнительные услуги. Хотите видеоклип, джип-тур или ужин на пляже? Мы реализуем любой сценарий, чтобы вы чувствовали абсолютный комфорт.",i:["💎 Всё включено: база тарифа «Золотой Стандарт» (стилист, цветы, ведущий).","💰 Депозит $500: включён бюджет на выбор доп. услуг (видеограф / джип / дрон / ужин). Это бюджет на допы, а не предоплата за бронь.","🚘 Логистика: приоритетная организация трансфера и сложных маршрутов.","🥥 Песочная церемония: красивый ритуал объединения семей в подарок.","🕶 VIP-сопровождение: личный контроль организатора 24/7."]},
+  en:{n:"Comfort (VIP)",s:"Maximum possibilities and freedom of wishes.",a:"Not just a package but a builder of your perfect day. Full freedom: a budget for any extra services is already included. Want a video clip, jeep tour or beach dinner? We realize any scenario so you feel absolute comfort.",i:["💎 All inclusive: base of \"Gold Standard\" (stylist, flowers, host).","💰 $500 deposit: budget for extras (videographer / jeep / drone / dinner) included. It is an extras budget, not a booking prepayment.","🚘 Logistics: priority transfer and complex route organization.","🥥 Sand ceremony: a beautiful family-unity ritual as a gift.","🕶 VIP support: personal organizer control 24/7."]}},
+ /* ---- БАССЕЙН (loc:"pool") ---- */
+ {id:"sunset",loc:"pool",price:1200,
+  ru:{n:"Закат у бассейна",s:"Церемония в золотой час и фотографии у воды.",a:"",m:"Около 2,5 часов (примерно 16:30–19:00) · пара + до 4 гостей",i:["Зона у бассейна только для вас","Арка с живыми цветами","Церемония с русскоговорящим ведущим","Фотосессия 2 часа","Шампанское для пары","Сет закусок на гостей","Музыка бара (плейлист под вас)","Букет невесты и декор"]},
+  en:{n:"Sunset by the Pool",s:"A golden-hour ceremony and photos by the water.",a:"",m:"About 2.5 hours (approx. 16:30–19:00) · couple + up to 4 guests",i:["Pool area just for you","Arch with live flowers","Ceremony with a Russian-speaking host","2-hour photo shoot","Champagne for the couple","Snack set for guests","Bar music (playlist to your taste)","Bridal bouquet and decor"]}},
+ {id:"evening",loc:"pool",price:1700,pop:1,
+  ru:{n:"Закат + Вечер",s:"Церемония, золотой час и тёплый ужин у воды.",a:"Живая музыка (гитара или скрипка) доступна как допуслуга.",m:"До 20:00 [ПОДТВЕРДИТЬ] · пара + до 7 гостей",i:["Всё из «Заката у бассейна»","Бар закрыт только для вас","Сет-ужин на гостей","Гирлянды и свечи","Торт или десертный стол (торт привозите вы или мы)","Фото до конца ужина","Полная координация дня"]},
+  en:{n:"Sunset + Evening",s:"Ceremony, golden hour and a warm dinner by the water.",a:"Live music (guitar or violin) is available as an extra.",m:"Until 20:00 [TO CONFIRM] · couple + up to 7 guests",i:["Everything from \"Sunset by the Pool\"","The bar closed just for you","Dinner set for guests","String lights and candles","Cake or dessert table (you bring the cake or we do)","Photos until the end of dinner","Full coordination of the day"]}},
+ {id:"night",loc:"pool",price:2500,
+  ru:{n:"Ночь у бассейна",s:"Полный вечер до 22:00 с вечеринкой.",a:"",m:"До 22:00 · пара + до 9 гостей (всего 10)",i:["Всё из «Заката + Вечера»","DJ, свет и звук","Один артист на выбор (живая музыка или шоу, список [УТОЧНИТЬ])","Фото и видео-хайлайт (Reels в тот же вечер)","Финал: тост, последний танец, общее фото","Организатор рядом весь вечер"]},
+  en:{n:"Night by the Pool",s:"A full evening until 22:00 with a party.",a:"",m:"Until 22:00 · couple + up to 9 guests (10 in total)",i:["Everything from \"Sunset + Evening\"","DJ, light and sound","One artist of your choice (live music or a show, list [TBC])","Photo and video highlight (Reels the same evening)","Finale: toast, last dance, group photo","Organizer by your side all evening"]}}
+ ],
+ /* Допы: l=локации; t={loc:[тарифы]} (нет = все); x=уже входит (карточка неактивна); h=скрыть на тарифе;
+    p={loc:число} (нет = [ЦЕНА]); ph=путь к фото 3:2 (пусто = иконка); hidden=true не показывать (данные сохранены) */
+ addons:[
+ {id:"candles",g:"atm",ic:"candle",l:["beach","pool"],t:{pool:["sunset"]},x:["evening","night"],kw:"гирлянд|свеч|candle|garland",ph:"",ru:["Вечерние гирлянды и свечи","Тёплый свет в зоне церемонии."],en:["Evening string lights and candles","Warm light in the ceremony area."]},
+ {id:"bouquet",g:"atm",ic:"flower",l:["beach"],t:{beach:["start"]},kw:"букет|бутоньер|bouquet|boutonn",ph:"",ru:["Букет и бутоньерка из живых цветов","Свежие цветы для невесты и жениха."],en:["Live-flower bouquet and boutonniere","Fresh flowers for the bride and groom."]},
+ {id:"archdeco",g:"atm",ic:"arch",l:["beach","pool"],ln:1,kw:"декор арк|авторск|decor|signature",ph:"",ru:["Авторский декор арки","Другая стилистика: живые цветы, пампасная трава, лёгкие ткани, бохо."],en:["Signature arch decor","A different style: live flowers, pampas grass, light fabrics, boho."]},
+ {id:"dinner",g:"exp",ic:"dinner",l:["beach"],kw:"ужин|dinner",ph:"",ru:["Романтический ужин","Приватный стол при свечах."],en:["Romantic dinner","A private candlelit table."]},
+ {id:"champ",g:"exp",ic:"glass",l:["beach"],t:{beach:["start"]},kw:"шампан|фрукт|champagne|fruit",ph:"",ru:["Шампанское и фруктовый сет","Бокалы, шампанское и фрукты для вас двоих."],en:["Champagne and fruit set","Glasses, champagne and fruit for the two of you."]},
+ {id:"coconut",g:"exp",ic:"coconut",l:["beach","pool"],kw:"кокос|coconut",ph:"",ru:["Кокосы с гравировкой для тоста","Именные кокосы для первого тоста."],en:["Engraved coconuts for the toast","Personalized coconuts for your first toast."]},
+ {id:"shobar",g:"exp",ic:"cocktail",l:["pool"],kw:"бармен|bartender",ph:"",ru:["Шоу-бармен","Коктейли с шоу для гостей."],en:["Show bartender","Cocktails with a show for guests."]},
+ {id:"booth",g:"exp",ic:"camera",l:["pool"],kw:"фотобудк|photo ?booth",ph:"",ru:["Фотобудка","Мгновенные кадры для гостей."],en:["Photo booth","Instant shots for guests."]},
+ {id:"fire",g:"exp",ic:"flame",l:["pool"],tbc:1,kw:"огнен|fire",ph:"",ru:["Огненное шоу","Выступление у воды [УТОЧНИТЬ у бара, разрешено ли]."],en:["Fire show","A performance by the water [CONFIRM with the venue]."]},
+ {id:"live",g:"emo",ic:"music",l:["beach","pool"],h:["night"],p:{pool:250},kw:"живая музык|гитар|скрип|live music|guitar|violin",ph:"",ru:["Живая музыка","Гитара или скрипка на момент клятв."],en:["Live music","Guitar or violin for the vows."]}, /* цена бассейна $250 [ПОДТВЕРДИТЬ] */
+ {id:"video",g:"emo",ic:"video",l:["beach","pool"],kw:"видеоролик|видеограф|video",ph:"",ru:["Видеоролик","Кинематографичный ролик о вашем дне."],en:["Video clip","A cinematic film of your day."]},
+ {id:"reels",g:"emo",ic:"reels",l:["beach","pool"],h:["night"],kw:"reels|shorts|рилс",ph:"",ru:["Reels / Shorts в день съёмки","Короткий вертикальный ролик в день съёмки."],en:["Reels / Shorts on the day","A short vertical clip on the shoot day."]},
+ {id:"makeup",g:"emo",ic:"brush",l:["beach","pool"],t:{beach:["start","main"]},kw:"визаж|причёск|макияж|стилист|makeup|hair|stylist",ph:"",ru:["Образ невесты","Визажист и причёска с выездом."],en:["Bridal look","Makeup artist and hairstyle on location."]},
+ {id:"guests",g:"emo",ic:"users",l:["pool"],kw:"дополнительные гост|extra guest",ph:"",ru:["Дополнительные гости","В пределах 10 человек."],en:["Extra guests","Within the limit of 10 people."]},
+ {id:"hour",g:"emo",ic:"clock",l:["pool"],kw:"час фото|extra hour",ph:"",ru:["Дополнительный час фотосъёмки","Больше времени на кадры."],en:["Extra photo hour","More time for photos."]},
+ {id:"drone",hidden:true,l:[],g:"emo",ic:"drone",ru:["Дрон",""],en:["Drone",""]},
+ {id:"jeep",hidden:true,l:[],g:"emo",ic:"jeep",ru:["Джип-тур",""],en:["Jeep tour",""]}
+ ],
+ faq:{
+  beach:[["Погода и план на дождь","Weather and rain plan","[ОТВЕТ: план на дождь]","[ANSWER: rain plan]"],["Ветер и жара","Wind and heat","[ОТВЕТ]","[ANSWER]"],["Разрешения","Permits","[ОТВЕТ]","[ANSWER]"],["Сроки подготовки","Lead time","[ОТВЕТ]","[ANSWER]"],["Оплата","Payment","[ОТВЕТ]","[ANSWER]"],["Предоплата","Prepayment","[ОТВЕТ]","[ANSWER]"]],
+  pool:[["Что если дождь?","What if it rains?","На бассейне есть крытая зона на случай дождя.","There is a covered area at the pool in case of rain."],["Сколько гостей можно пригласить?","How many guests can I invite?","До 10 человек, включая пару. [УТОЧНИТЬ: входят ли в 10 фотограф, ведущий и DJ]","Up to 10 people including the couple. [TBC: are the photographer, host and DJ counted?]"],["До скольки длится вечер?","How late does the evening go?","Программа заканчивается не позже 22:00.","The program ends no later than 22:00."],["Можно привезти свой торт и шампанское?","Can we bring our own cake and champagne?","Да, можно.","Yes, you can."],["Входят ли напитки?","Are drinks included?","Напитки в сет не входят: гости заказывают их в баре.","Drinks are not part of the set: guests order them at the bar."],["Где находится место?","Where is the venue?","Адрес сообщаем после брони.","We share the address after booking."],["Предоплата и отмена","Prepayment and cancellation","[ОТВЕТ]","[ANSWER]"]]
+ },
+ /* портфолио: [файл в img/, alt RU, alt EN, метки]; фото бассейна положите в img/pool-1.jpg … pool-5.jpg */
+ portfolio:[["beach-dance","Первый танец на пляже","First dance on the beach",["beach"]],["arch-dip","Поцелуй у арки","A kiss under the arch",["beach","arch"]],["pool-1","Вечер у бассейна","Evening by the pool",["pool"]],["champagne-toast","Тост у арки","A toast by the arch",["beach","arch"]],["pool-2","Арка с подсветкой","Illuminated arch",["pool","arch"]],["arch-kiss","Нежность у цветочной арки","Tenderness by the floral arch",["beach","arch"]],["pool-3","Ужин у воды","Dinner by the water",["pool"]],["bouquet-portrait","Портрет невесты с букетом","Bride with her bouquet",["beach"]],["pool-4","Гирлянды у бассейна","String lights by the pool",["pool"]],["sand-ceremony","Песочная церемония","Sand ceremony",["beach"]],["pool-5","DJ и вечеринка","DJ and party",["pool"]],["palms-dance","Танец среди пальм","Dancing among palms",["beach"]],["rings-hands","Кольца и руки","Rings and hands",["beach"]],["arch-eucalyptus","Эвкалипт и цветочная арка","Eucalyptus and floral arch",["beach","arch"]],["palms-kiss","Поцелуй среди пальм","A kiss among palms",["beach"]]],
  reviews:3
 };
-/* ============ ПЕРЕВОДЫ (добавьте vi: {...} для вьетнамского) ============ */
-const T={ru:{h1:"Свадебная фотосессия и церемония с аркой в Муйне",h1p:"Свадебный декор, тропическая арка на берегу океана и незабываемая атмосфера вашего праздника во Вьетнаме.",cta1:"Забронировать дату",cta2:"Написать в мессенджер",quizT:"Соберите свой день",q:["Когда?","Сколько гостей?","Какой формат?","Какой бюджет?"],fm:["Церемония вдвоём","Камерная","Полная свадьба","Только фотосессия"],bd:["до $550","$550–790","$790–990","$990–1500","от $1500","хочу особую арку"],next:"Дальше",back:"Назад",rec:"Вам подойдёт",up:"Если хотите больше:",send:"Отправить заявку",tarT:"Тарифы",tarP:"Листайте карточки, выберите ближайший к вашему дню.",pick:"Выбрать этот тариф",inc:"Что входит",pop:"Самый популярный",archTag:"Авторская арка",addT:"Дополнительно",addP:"Добавьте к любому тарифу. В «Комфорт» бюджет на допы уже заложен.",howT:"Как это работает",steps:["Вы оставляете заявку с датой и пожеланиями","Мы подтверждаем дату и согласуем детали","Вносите предоплату, мы бронируем подрядчиков","В день церемонии вы только наслаждаетесь"],portT:"Портфолио",all:"Все",revT:"Отзывы",calT:"Свободные даты",calP:()=>"Нажмите на свободную дату, чтобы добавить её в заявку.",finT:"Готовы выбрать дату? Напишите нам",ask:"Задать вопрос",sel:"Выбрано:",ph:"Ответ или команда…",priceTBD:"[ЦЕНА]",from:"$",b:{hi:"Здравствуйте! Отвечу по тарифам и датам или помогу собрать заявку.",qs:["Сколько стоит?","Чем отличаются тарифы?","Что если дождь?","Свободные даты","Оставить заявку"],lead:["Как вас зовут?","На какую дату?","Сколько будет гостей?","Какой формат?","Какой тариф интересует?","Какой бюджет?","Как с вами связаться (мессенджер и контакт)?"],unk:"Уточню у менеджера. Оставьте контакт, и мы ответим.",done:"Готово! Откройте мессенджер, текст уже заполнен:",arch:"Состав и цену «Арки Премиум» уточню у менеджера.",diff:"Ступени: Начало — база; Основной — живые цветы и съёмка до 4 ч; Золотой Стандарт — плюс стилист; Комфорт — плюс $500 на допы и VIP-сопровождение.",free:()=>"Свободные даты смотрите в календаре ниже."}},
-en:{h1:"Wedding photo shoot and arch ceremony in Mui Ne",h1p:"Wedding decor, a tropical arch on the ocean shore and the unforgettable atmosphere of your celebration in Vietnam.",cta1:"Book your date",cta2:"Message us",quizT:"Build your day",q:["When?","How many guests?","Which format?","What budget?"],fm:["Just the two of us","Intimate","Full wedding","Photo shoot only"],bd:["up to $550","$550–790","$790–990","$990–1500","over $1500","I want a signature arch"],next:"Next",back:"Back",rec:"Your best fit",up:"If you want more:",send:"Send request",tarT:"Packages",tarP:"Swipe the cards and pick the closest to your day.",pick:"Choose this package",inc:"What's included",pop:"Most popular",archTag:"Signature arch",addT:"Extras",addP:"Add to any package. Comfort already includes an extras budget.",howT:"How it works",steps:["You send a request with date and wishes","We confirm the date and details","You pay a prepayment, we book vendors","On the day you just enjoy it"],portT:"Portfolio",all:"All",revT:"Reviews",calT:"Available dates",calP:()=>"Tap an available date to add it to your request.",finT:"Ready to pick a date? Write to us",ask:"Ask a question",sel:"Selected:",ph:"Answer or command…",priceTBD:"[PRICE]",from:"$",b:{hi:"Hi! I can answer about packages and dates or help you build a request.",qs:["How much?","How do packages differ?","What if it rains?","Available dates","Leave a request"],lead:["What is your name?","Which date?","How many guests?","Which format?","Which package?","What budget?","How can we reach you (messenger and contact)?"],unk:"I'll check with the manager. Leave a contact and we'll reply.",done:"Done! Open a messenger, the text is prefilled:",arch:"I'll check the Arch Premium details and price with the manager.",diff:"Steps: Start is the base; Main adds live flowers and a 4h shoot; Gold adds a stylist; Comfort adds $500 for extras and VIP support.",free:()=>"You can see available dates in the calendar below."}}};
+const ICON={candle:'<path d="M12 3c1.5 2 2 3 0 5-2-2-1.5-3 0-5zM9 11h6v10H9z"/>',flower:'<circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C10 6 12 3 12 3s2 3 0 6.5M14.5 12C18 10 21 12 21 12s-3 2-6.5 0M12 14.5C14 18 12 21 12 21s-2-3 0-6.5M9.5 12C6 14 3 12 3 12s3-2 6.5 0"/>',arch:'<path d="M4 21V11a8 8 0 0116 0v10M8 21v-9a4 4 0 018 0v9"/>',dinner:'<path d="M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10M17 3c-2 2-2 6 0 8v10"/>',glass:'<path d="M8 3h8l-1 8a3 3 0 01-6 0L8 3zM12 14v7M9 21h6"/>',coconut:'<circle cx="12" cy="13" r="7"/><path d="M9 11h.01M15 11h.01M12 16h.01M12 6V3"/>',cocktail:'<path d="M4 4h16l-8 9-8-9zM12 13v8M8 21h8"/>',camera:'<path d="M3 8h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="13" r="3.5"/>',flame:'<path d="M12 3c1 4 5 6 5 11a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-6 1-10z"/>',music:'<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',video:'<rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 10l4-2v8l-4-2"/>',reels:'<rect x="5" y="3" width="14" height="18" rx="3"/><path d="M10 9l5 3-5 3z"/>',brush:'<path d="M20 4L10 14M10 14c-3 0-5 2-5 6 4 0 6-2 6-5"/>',users:'<circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M16 5a3 3 0 010 6M18 14c2 1 3 3 3 6"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'};
+/* ============ ПЕРЕВОДЫ (для VI добавьте ключ vi:{...}) ============ */
+const T={
+ru:{h1:"Свадебная фотосессия и церемония с аркой в Муйне",h1p:"Свадебный декор, тропическая арка на берегу океана и незабываемая атмосфера вашего праздника во Вьетнаме.",h1pp:"Закрытый вечер в баре с бассейном: церемония на закате, ужин и вечеринка только для вас.",cta1:"Забронировать дату",cta2:"Написать в мессенджер",poolph:"[ФОТО/ВИДЕО БАССЕЙНА → img/pool-hero.jpg]",loc:["Пляж","Бассейн"],
+quizT:"Соберите свой день",q:["Где проведём?","Когда?","Сколько гостей?","Какой формат?","Какой бюджет?"],fm:["Церемония вдвоём","Камерная","Полная свадьба","Только фотосессия"],
+bd:{beach:["до $550","$550–790","$790–990","$990–1500","от $1500","хочу особую арку"],pool:["до $1200","$1200–1700","$1700–2500","от $2500","хочу особую арку"]},
+next:"Дальше",back:"Назад",rec:"Вам подойдёт",up:"Если хотите больше:",send:"Отправить заявку",over10:"Для такой компании подойдёт пляж или индивидуальный вариант.",lowPool:"Бассейн начинается с $1 200. Показать пляжные тарифы или обсудить индивидуально?",showBeach:"Показать пляжные тарифы",discuss:"Обсудить индивидуально",photoOnly:"Для формата «только фотосессия» цена уточняется. Оставьте заявку, и менеджер подберёт вариант.",archUp:"Рекомендуем «Авторский декор арки» (апгрейд арки): добавили его в заявку.",
+tarT:"Тарифы",tarPb:"Листайте карточки, выберите ближайший к вашему дню.",tarPp:"Закрытый бар с бассейном только для вас: церемония на закате и вечер до 22:00. Адрес сообщаем после брони.",pick:"Выбрать этот тариф",picked:"✓ Выбран",inc:"Что входит",pop:"Самый популярный",archTag:"Авторская арка",
+addT:"Детали и атмосфера",addP:"Добавьте к любому тарифу.",addPc:" В «Комфорт» бюджет на допы уже заложен.",grp:{atm:"Атмосфера и декор",exp:"Впечатления",emo:"Эмоции и сервис"},all:"Все тарифы",forT:"Для тарифов:",incl:"Уже входит в ваш тариф",tbc:"уточняется",priceTBD:"[ЦЕНА]",view:"Смотреть тариф",
+sel:"Выбрано",book:"Забронировать с выбранными опциями",cfHint:"Входит в бюджет допов $500 тарифа «Комфорт».",cfNote:"за вычетом $500 бюджета «Комфорта»",cfTbd:"в рамках бюджета $500, остаток уточняется",tbdP:"цена уточняется",
+howT:"Как это работает",steps:["Вы оставляете заявку с датой и пожеланиями","Мы подтверждаем дату и согласуем детали","Вносите предоплату, мы бронируем подрядчиков","В день церемонии вы только наслаждаетесь"],
+flowT:"Как проходит вечер",flow:["Сбор и welcome drink","Церемония на закате","Фотосессия у воды","Ужин","Тосты, первый танец, торт","DJ","Финал до 22:00"],sunN:"Время церемонии подставляем по закату на вашу дату.",
+condT:"Условия бассейна",cond:["До 10 человек, включая пару [УТОЧНИТЬ: входят ли в 10 фотограф, ведущий и DJ]","Программа заканчивается не позже 22:00","Музыка бара своя","Есть крытая зона на случай дождя","Можно привезти свой торт и шампанское","Напитки в сет не входят: гости заказывают их в баре","«Арка Премиум» на бассейне: апгрейд к любому тарифу (авторская арка с подсветкой), цена [ЦЕНА]"],
+portT:"Портфолио",filt:{all:"Все",beach:"Пляж",pool:"Бассейн",arch:"Арки"},revT:"Отзывы",calT:"Свободные даты",calP:"Нажмите на свободную дату, чтобы добавить её в заявку.",free:n=>`Свободно ${n} дат`,finT:"Готовы выбрать дату? Напишите нам",ask:"Задать вопрос",ph:"Ответ или команда…",
+b:{hi:"Здравствуйте! Отвечу по тарифам и допам или помогу собрать заявку.",qs:["Сколько стоит?","Чем отличаются тарифы?","Что если дождь?","Свободные даты","Оставить заявку"],lead:["Где проведём: на пляже или у бассейна?","Как вас зовут?","На какую дату?","Сколько будет гостей?","Какой формат?","Какой тариф интересует?","Какой бюджет?","Как с вами связаться (мессенджер и контакт)?"],unk:"Уточню у менеджера. Оставьте контакт, и мы ответим.",done:"Готово! Откройте мессенджер, текст уже заполнен:",arch:"Состав и цену «Арки Премиум» уточню у менеджера. Оставьте контакт, и мы ответим.",
+diff:{beach:"Ступени пляжа: Начало — база; Основной — живые цветы и съёмка до 4 ч; Золотой Стандарт — плюс стилист; Комфорт — плюс $500 на допы и VIP-сопровождение.",pool:"Закат у бассейна — церемония и фотосессия у воды. Закат + Вечер — плюс бар только для вас и сет-ужин. Ночь у бассейна — вечер до 22:00 с DJ, артистом и видео-хайлайтом."},
+rainPool:"На бассейне есть крытая зона на случай дождя.",dates:"Свободные даты смотрите в календаре на сайте.",rules:"Бассейн: до 10 человек включая пару, программа заканчивается не позже 22:00, можно привезти свой торт и шампанское, есть крытая зона. Напитки в сет не входят, гости заказывают их в баре.",notHere:"Этой опции нет на выбранной локации.",priceTbd:"Цену уточню у менеджера.",first:"Что входит:"}},
+en:{h1:"Wedding photo shoot and arch ceremony in Mui Ne",h1p:"Wedding decor, a tropical arch on the ocean shore and the unforgettable atmosphere of your celebration in Vietnam.",h1pp:"A private evening at a bar with a pool: a sunset ceremony, dinner and a party just for you.",cta1:"Book your date",cta2:"Message us",poolph:"[POOL PHOTO/VIDEO → img/pool-hero.jpg]",loc:["Beach","Pool"],
+quizT:"Build your day",q:["Where?","When?","How many guests?","Which format?","What budget?"],fm:["Just the two of us","Intimate","Full wedding","Photo shoot only"],
+bd:{beach:["up to $550","$550–790","$790–990","$990–1500","over $1500","I want a signature arch"],pool:["up to $1200","$1200–1700","$1700–2500","over $2500","I want a signature arch"]},
+next:"Next",back:"Back",rec:"Your best fit",up:"If you want more:",send:"Send request",over10:"For a group this size, the beach or a custom option will suit you.",lowPool:"The pool starts at $1,200. Show beach packages or discuss individually?",showBeach:"Show beach packages",discuss:"Discuss individually",photoOnly:"The price for a photo-only shoot is confirmed individually. Leave a request and the manager will suggest an option.",archUp:"We recommend \"Signature arch decor\" (arch upgrade): added to your request.",
+tarT:"Packages",tarPb:"Swipe the cards and pick the closest to your day.",tarPp:"A private bar with a pool just for you: a sunset ceremony and an evening until 22:00. We share the address after booking.",pick:"Choose this package",picked:"✓ Selected",inc:"What's included",pop:"Most popular",archTag:"Signature arch",
+addT:"Details & Atmosphere",addP:"Add to any package.",addPc:" Comfort already includes an extras budget.",grp:{atm:"Atmosphere and decor",exp:"Experiences",emo:"Emotions and service"},all:"All packages",forT:"For packages:",incl:"Already included in your package",tbc:"TBC",priceTBD:"[PRICE]",view:"View package",
+sel:"Selected",book:"Book with selected options",cfHint:"Covered by the $500 extras budget of the Comfort package.",cfNote:"minus the $500 Comfort budget",cfTbd:"within the $500 budget, the remainder is confirmed",tbdP:"price confirmed individually",
+howT:"How it works",steps:["You send a request with date and wishes","We confirm the date and details","You pay a prepayment, we book vendors","On the day you just enjoy it"],
+flowT:"How the evening goes",flow:["Gathering and welcome drink","Ceremony at sunset","Photo session by the water","Dinner","Toasts, first dance, cake","DJ","Finale until 22:00"],sunN:"We set the ceremony time by the sunset on your date.",
+condT:"Pool conditions",cond:["Up to 10 people including the couple [TBC: are the photographer, host and DJ counted?]","The program ends no later than 22:00","The bar has its own music","A covered area in case of rain","You can bring your own cake and champagne","Drinks are not in the set: guests order them at the bar","Arch Premium at the pool: an upgrade to any package (signature arch with lighting), price [PRICE]"],
+portT:"Portfolio",filt:{all:"All",beach:"Beach",pool:"Pool",arch:"Arches"},revT:"Reviews",calT:"Available dates",calP:"Tap an available date to add it to your request.",free:n=>`${n} dates available`,finT:"Ready to pick a date? Write to us",ask:"Ask a question",ph:"Answer or command…",
+b:{hi:"Hi! I can answer about packages and extras or help you build a request.",qs:["How much?","How do packages differ?","What if it rains?","Available dates","Leave a request"],lead:["Where: the beach or the pool?","What is your name?","Which date?","How many guests?","Which format?","Which package?","What budget?","How can we reach you (messenger and contact)?"],unk:"I'll check with the manager. Leave a contact and we'll reply.",done:"Done! Open a messenger, the text is prefilled:",arch:"I'll check the Arch Premium details and price with the manager. Leave a contact and we'll reply.",
+diff:{beach:"Beach steps: Start is the base; Main adds live flowers and a 4h shoot; Gold adds a stylist; Comfort adds $500 for extras and VIP support.",pool:"Sunset by the Pool: ceremony and photos by the water. Sunset + Evening adds the bar just for you and a dinner set. Night by the Pool: evening until 22:00 with DJ, an artist and a video highlight."},
+rainPool:"There is a covered area at the pool in case of rain.",dates:"See available dates in the calendar on the site.",rules:"Pool: up to 10 people including the couple, the program ends no later than 22:00, you can bring your own cake and champagne, there is a covered area. Drinks are not in the set: guests order at the bar.",notHere:"This option is not available at the selected location.",priceTbd:"I'll confirm the price with the manager.",first:"Included:"}}
+};
 /* ============ ЛОГИКА ============ */
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-let L=localStorage.getItem("l")||"ru";if(!T[L])L="ru";
-const S={step:0,date:"",guests:"",fmt:"",budget:"",tariff:"",name:"",contact:""};
-const tt=()=>T[L],tf=x=>x[L];
-const iso=d=>d.toISOString().slice(0,10);
-function freeDates(){const t=new Date(),o=[];for(let i=1;i<=92;i++){const d=new Date(t);d.setDate(t.getDate()+i);if(!CONFIG.busy.includes(iso(d)))o.push(iso(d))}return o}
-function render(){document.documentElement.lang=L;
- $$("[data-i]").forEach(e=>e.textContent=tt()[e.dataset.i]);
+let L="ru";try{L=localStorage.getItem("l")||"ru"}catch(e){}if(!T[L])L="ru";
+const S={loc:"beach",step:0,date:"",guests:"",fmt:"",budget:"",tariff:"",addons:[],name:"",contact:"",over:0,fmtRaw:"",budgetRaw:""};
+const tt=()=>T[L],tf=x=>x[L],iso=d=>d.toISOString().slice(0,10),usd=n=>"$"+String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ");
+const TAR=id=>CONFIG.tariffs.find(x=>x.id==id),tn=id=>tf(TAR(id)).n,ADD=id=>CONFIG.addons.find(a=>a.id==id),ap=a=>a.p&&a.p[S.loc];
+function ph(i){const d=document.createElement("div");d.className="ph";d.textContent="[ФОТО: "+i.alt+" → "+i.getAttribute("src")+"]";i.replaceWith(d)}
+function av(a){if(a.hidden||!a.l.includes(S.loc))return"hide";const k=S.tariff;if(k){if((a.h||[]).includes(k))return"hide";if((a.x||[]).includes(k))return"inc";const t=a.t&&a.t[S.loc];if(t&&!t.includes(k))return"hide"}return"ok"}
+function prune(){S.addons=S.addons.filter(id=>av(ADD(id))=="ok")}
+function setLoc(l){S.loc=l;S.tariff="";S.addons=[];S.budget="";S.over=0;if(S.step==5)S.step=4;render()}
+function refresh(){renderTariffs();renderAddons();renderSticky();summary()}
+function render(){const t=tt(),pool=S.loc=="pool";document.documentElement.lang=L;document.body.dataset.loc=S.loc;
+ $$("[data-i]").forEach(e=>e.textContent=t[e.dataset.i]);
+ $("#h1p").textContent=pool?t.h1pp:t.h1p;$("#tarP").textContent=pool?t.tarPp:t.tarPb;$("#addP").textContent=t.addP+(pool?"":t.addPc);
  $("#lang").innerHTML=Object.keys(T).map(k=>`<button class="${k==L?"on":""}" data-l="${k}">${k.toUpperCase()}</button>`).join("");
- $("#calP").textContent=tt().calP();
- $("#tr").innerHTML=CONFIG.tariffs.map(x=>{const d=tf(x);return`<article class="card ${x.pop?"pop":""} ${x.arch?"arch":""}">${x.pop?`<span class="tag">${tt().pop}</span>`:""}${x.arch?`<span class="tag">${tt().archTag}</span>`:""}<h3>${d.n}</h3><div class="price">${x.price?"$"+x.price:tt().priceTBD}</div><p><b>${d.s}</b></p><p>${d.a}</p>${x.arch?`<div class="slots"><!-- 3-4 фото арок: img/arch1.jpg … -->${[1,2,3,4].map(i=>`<img class="slot" loading="lazy" alt="" src="img/${["arch-dip","arch-kiss","champagne-toast","arch-eucalyptus"][i-1]}.jpg">`).join("")}</div>`:""}<details><summary>${tt().inc}</summary><ul class="inc">${d.i.map(i=>`<li>${i}</li>`).join("")}</ul></details><button class="btn" data-t="${x.id}">${tt().pick}</button></article>`}).join("");
- $("#addG").innerHTML=CONFIG.addons.map(a=>`<div class="box"><div style="font-size:30px">${a[0]}</div><h3>${L=="ru"?a[1]:a[2]}</h3><p>${CONFIG.addPrice}</p></div>`).join("");
- $("#howG").innerHTML=tt().steps.map((s,i)=>`<div class="box"><h3>${i+1}</h3><p>${s}</p></div>`).join("");
- renderPort();
+ $("#locsw").innerHTML=["beach","pool"].map((k,i)=>`<button data-lc="${k}" class="${S.loc==k?"on":""}" aria-pressed="${S.loc==k}">${t.loc[i]}</button>`).join("");
+ $("#poolph").style.backgroundImage=`url(${CONFIG.media.poolHero}),linear-gradient(160deg,#1B3F52,#0f2a36)`;
+ const fd=CONFIG.freeDates[S.loc].filter(d=>d>iso(new Date()));$("#freeTag").hidden=!fd.length;$("#freeTag").textContent=fd.length?t.free(fd.length):"";
+ $("#cond").innerHTML=`<h3>${t.condT}</h3><ul>${t.cond.map(c=>`<li>${c}</li>`).join("")}</ul>`;
+ $("#flowL").innerHTML=t.flow.map(f=>`<li>${f}</li>`).join("");
+ const sm=S.date&&/^\d{4}-\d\d/.test(S.date)?CONFIG.sunsetByMonth[+S.date.slice(5,7)]:"";$("#sunN").textContent=t.sunN+(sm&&sm[0]!="["?" ("+sm+")":"");
+ $("#howG").innerHTML=t.steps.map((s,i)=>`<div class="box"><h3>${i+1}</h3><p>${s}</p></div>`).join("");
  $("#rg").innerHTML=Array.from({length:CONFIG.reviews},()=>`<div class="box"><p>[ОТЗЫВ / REVIEW]</p><small>[ИМЯ, ГОРОД]</small></div>`).join("");
- renderCal();
- $("#faqG").innerHTML=CONFIG.faq.map(f=>`<details><summary>${L=="ru"?f[0]:f[1]}</summary><p>${L=="ru"?f[2]:f[3]}</p></details>`).join("");
- $("#ftC").textContent=CONFIG.contacts.phone;$("#ci").placeholder=tt().ph;
- renderQuiz();summary();
-}
+ $("#faqG").innerHTML=CONFIG.faq[S.loc].map(f=>`<details><summary>${L=="ru"?f[0]:f[1]}</summary><p>${L=="ru"?f[2]:f[3]}</p></details>`).join("");
+ $("#ftC").textContent=CONFIG.contacts.phone;$("#ci").placeholder=t.ph;
+ renderPort();renderCal();renderQuiz();refresh();pf!="all"&&!$$("#pf [data-f]").some(b=>b.dataset.f==pf)&&(pf="all",renderPort())}
+function renderTariffs(){const t=tt();
+ $("#tr").innerHTML=CONFIG.tariffs.filter(x=>x.loc==S.loc).map(x=>{const d=tf(x),on=S.tariff==x.id;return`<article class="card ${x.pop?"pop":""} ${x.arch?"arch":""}" id="t-${x.id}">${x.pop?`<span class="tag">${t.pop}</span>`:""}${x.arch?`<span class="tag">${t.archTag}</span>`:""}<h3>${d.n}</h3><div class="price">${x.price?usd(x.price):t.priceTBD}</div><p><b>${d.s}</b></p>${d.m?`<p class="meta">${d.m}</p>`:""}${d.a?`<p>${d.a}</p>`:""}${x.arch?`<div class="slots"><!-- 3-4 фото авторских арок -->${["arch-dip","arch-kiss","champagne-toast","arch-eucalyptus"].map(f=>`<img class="slot" loading="lazy" alt="" src="img/${f}.jpg">`).join("")}</div>`:""}<details><summary>${t.inc}</summary><ul class="inc">${d.i.map(i=>`<li>${i}</li>`).join("")}</ul></details><button class="btn" data-t="${x.id}" aria-pressed="${on}">${on?t.picked:t.pick}</button></article>`}).join("")}
+function card(a){const t=tt(),st=av(a),on=S.addons.includes(a.id),off=st=="inc",tl=a.t&&a.t[S.loc],lab=tl?tl.map(tn).join(", "):t.all,pr=ap(a);
+ return`<article class="ac ${on?"on":""} ${off?"off":""}"><button class="tg" data-a="${a.id}" aria-pressed="${on}" ${off?'aria-disabled="true"':""}><span class="ck"></span>${a.ph?`<img class="ap" loading="lazy" alt="" src="${a.ph}">`:`<span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[a.ic]}</svg></span>`}<h4>${a[L][0]}</h4><p>${a[L][1]}</p><span class="pl"><b>${typeof pr=="number"?usd(pr):t.priceTBD}</b></span><small>${off?t.incl:t.forT+" "+lab}${a.tbc?" · "+t.tbc:""}</small></button>${a.ln&&S.loc=="beach"?`<a class="lnk" href="#t-arch">${t.view}</a>`:""}</article>`}
+function renderAddons(){const t=tt();let h=S.tariff=="comfort"?`<p class="hint">${t.cfHint}</p>`:"";
+ for(const g of["atm","exp","emo"]){const it=CONFIG.addons.filter(a=>a.g==g&&av(a)!="hide");if(it.length)h+=`<h3 class="gt">${t.grp[g]}</h3><div class="ag">${it.map(card).join("")}</div>`}$("#addG").innerHTML=h}
+function sums(){const t=tt(),it=S.addons.map(ADD),nums=it.map(ap),all=it.length&&nums.every(n=>typeof n=="number"),sum=all?nums.reduce((a,b)=>a+b,0):0,cf=S.tariff=="comfort"&&S.loc=="beach";
+ return{n:it.length,names:it.map(a=>a[L][0]).join(", "),price:all?(cf?usd(Math.max(0,sum-500))+" ("+t.cfNote+")":usd(sum)):(cf?t.cfTbd:t.tbdP)}}
+function renderSticky(){const s=$("#stk"),t=tt(),m=sums();s.classList.toggle("sel",m.n>0);document.body.classList.toggle("hasbar",m.n>0);
+ $("#stkI").textContent=m.n?`${t.sel} ${m.n}: ${m.names} · ${m.price}`:"";$("#stkB").textContent=m.n?t.book:t.cta1;
+ setTimeout(()=>document.documentElement.style.setProperty("--sh",s.offsetHeight+"px"),0)}
 let pf="all";
-function renderPort(){const loc=[...new Set(CONFIG.portfolio.map(p=>p[0]))];
- $("#pf").innerHTML=[["all",tt().all],...CONFIG.portfolio.map(p=>[p[0],L=="ru"?p[1]:p[2]])].filter((v,i,a)=>a.findIndex(z=>z[0]==v[0])==i).map(f=>`<button class="opt ${pf==f[0]?"on":""}" data-f="${f[0]}">${f[1]}</button>`).join("");
- $("#pg").innerHTML=CONFIG.portfolio.filter(p=>pf=="all"||p[0]==pf).map((p,i)=>`<figure style="margin:0"><img loading="lazy" src="img/${p[3]}.jpg" alt="${L=="ru"?p[1]:p[2]}"></figure>`).join("")}
-function renderCal(){let h="";const t=new Date();for(let m=0;m<3;m++){const f=new Date(t.getFullYear(),t.getMonth()+m,1),days=new Date(f.getFullYear(),f.getMonth()+1,0).getDate();
+function renderPort(){const t=tt();$("#pf").innerHTML=["all","beach","pool","arch"].map(k=>`<button class="opt ${pf==k?"on":""}" data-f="${k}">${t.filt[k]}</button>`).join("");
+ $("#pg").innerHTML=CONFIG.portfolio.filter(p=>pf=="all"||p[3].includes(pf)).map(p=>`<figure style="margin:0"><img loading="lazy" src="img/${p[0]}.jpg" alt="${L=="ru"?p[1]:p[2]}" onerror="ph(this)"></figure>`).join("")}
+function renderCal(){let h="";const t=new Date(),bz=CONFIG.busy[S.loc],fz=CONFIG.freeDates[S.loc];for(let m=0;m<3;m++){const f=new Date(t.getFullYear(),t.getMonth()+m,1),days=new Date(f.getFullYear(),f.getMonth()+1,0).getDate();
  h+=`<div><h3>${f.toLocaleDateString(L,{month:"long",year:"numeric"})}</h3><div class="mg">`+"<span></span>".repeat((f.getDay()+6)%7);
- for(let d=1;d<=days;d++){const x=new Date(f.getFullYear(),f.getMonth(),d),k=new Date(x.getTime()-x.getTimezoneOffset()*6e4).toISOString().slice(0,10),past=x<=t,busy=CONFIG.busy.includes(k);
+ for(let d=1;d<=days;d++){const x=new Date(f.getFullYear(),f.getMonth(),d),k=new Date(x.getTime()-x.getTimezoneOffset()*6e4).toISOString().slice(0,10),past=x<=t,busy=bz.includes(k)||(fz.length>0&&!fz.includes(k));
  h+=`<button class="d ${past?"past":""} ${busy?"busy":""} ${S.date==k?"sel":""}" ${past||busy?"disabled":""} data-d="${k}">${d}</button>`}h+="</div></div>"}$("#calG").innerHTML=h}
-function rec(){const b=CONFIG.budgets[S.budget];if(b===null)return{r:CONFIG.tariffs.find(x=>x.arch)};
- const pr=CONFIG.tariffs.filter(x=>x.price).sort((a,b)=>a.price-b.price);let r=pr.filter(x=>x.price<=b).pop()||pr[0];return{r,u:pr[pr.indexOf(r)+1]}}
-function renderQuiz(){const q=$("#qbody"),s=S.step,t=tt();$("#bar").style.width=(s+(s>3?1:0))*25+"%";
- if(s>3){const{r,u}=rec(),nm=x=>tf(x).n+" ("+(x.price?"$"+x.price:t.priceTBD)+")";
-  q.innerHTML=`<div class="res"><p>${t.rec}: <b>${nm(r)}</b></p><p>${tf(r).s}</p>${u&&u!==r?`<p>${t.up} <b>${nm(u)}</b></p>`:""}${S.fmt==3?`<p>${t.priceTBD} (${t.fm[3]})</p>`:""}</div><button class="btn o" style="color:#fff" id="qb">${t.back}</button> <button class="btn" id="qs" >${t.send}</button>`;
-  $("#qb").onclick=()=>{S.step=3;renderQuiz()};$("#qs").onclick=()=>{S.tariff=r.id;summary();location.hash="#final";postLead()};return}
- let body;if(s==0)body=`<input type="date" id="qi" value="${S.date}" min="${iso(new Date())}" aria-label="${t.q[0]}">`;
- else if(s==1)body=`<input type="number" id="qi" min="1" value="${S.guests}" aria-label="${t.q[1]}">`;
- else body=`<div class="opts">${(s==2?t.fm:t.bd).map((o,i)=>`<button class="opt ${S[s==2?"fmt":"budget"]===i?"on":""}" data-o="${i}">${o}</button>`).join("")}</div>`;
- q.innerHTML=`<h3 style="color:#fff">${t.q[s]}</h3>${body}<div>${s?`<button class="btn o" style="color:#fff" id="qb">${t.back}</button> `:""}<button class="btn" id="qn" >${t.next}</button></div>`;
- if(s<2)$("#qi").oninput=e=>{S[s?"guests":"date"]=e.target.value;summary()};
- $("#qn").onclick=()=>{S.step++;renderQuiz()};if(s)$("#qb").onclick=()=>{S.step--;renderQuiz()}}
-function lead(){const t=S.tariff?tf(CONFIG.tariffs.find(x=>x.id==S.tariff)).n:"—";
- const f=S.fmt!==""?tt().fm[S.fmt]:"—",b=S.budget!==""?tt().bd[S.budget]:"—";
- return `Привет! / Hi! ${S.name?S.name+". ":""}\nДата/Date: ${S.date||"—"}\nГостей/Guests: ${S.guests||"—"}\nФормат/Format: ${f}\nТариф/Package: ${t}\nБюджет/Budget: ${b}${S.contact?"\nКонтакт/Contact: "+S.contact:""}`}
+/* ---- квиз: локация → дата → гости → формат → бюджет ---- */
+function rec(){if(S.fmt===3)return{k:"photo"};if(S.loc=="pool"&&S.budget===0)return{k:"low"};const b=CONFIG.budgets[S.loc][S.budget],pr=CONFIG.tariffs.filter(x=>x.loc==S.loc&&x.price).sort((a,b)=>a.price-b.price);
+ if(b===null)return S.loc=="beach"?{k:"ok",r:CONFIG.tariffs.find(x=>x.arch)}:{k:"ok",r:pr.find(x=>x.pop)||pr[0],arch:1};
+ const r=pr.filter(x=>x.price<=b).pop()||pr[0];return{k:"ok",r,u:pr[pr.indexOf(r)+1]}}
+function renderQuiz(){const q=$("#qbody"),s=S.step,t=tt();$("#bar").style.width=Math.min(s,5)*20+"%";if(s==5)return result(q);
+ let body;if(s==1)body=`<input type="date" id="qi" value="${S.date}" min="${iso(new Date())}" aria-label="${t.q[1]}">`;
+ else if(s==2)body=`<input type="number" id="qi" min="1" ${S.loc=="pool"?`max="${CONFIG.poolMax}"`:""} value="${S.guests}" aria-label="${t.q[2]}">${S.over?`<div class="res"><p>${t.over10}</p></div><button class="btn" id="qo1">${t.showBeach}</button> <button class="btn o" id="qo2" style="color:#fff">${t.discuss}</button>`:""}`;
+ else{const list=s==0?t.loc:s==3?t.fm:t.bd[S.loc],cur=s==0?["beach","pool"].indexOf(S.loc):s==3?S.fmt:S.budget;body=`<div class="opts">${list.map((o,i)=>`<button class="opt ${cur===i?"on":""}" data-o="${i}">${o}</button>`).join("")}</div>`}
+ q.innerHTML=`<h3 style="color:#fff">${t.q[s]}</h3>${body}<div>${s?`<button class="btn o" id="qb" style="color:#fff">${t.back}</button> `:""}<button class="btn" id="qn">${t.next}</button></div>`;
+ if(s==1||s==2)$("#qi").oninput=e=>{S[s==1?"date":"guests"]=e.target.value;summary()};
+ if(s==2&&S.over){$("#qo1").onclick=()=>{setLoc("beach");S.step=2;renderQuiz()};$("#qo2").onclick=()=>{S.tariff="";summary();location.hash="#final";postLead()}}
+ $("#qn").onclick=()=>{if(s==2){if(S.loc=="pool"&&+S.guests>CONFIG.poolMax){S.over=1;return renderQuiz()}S.over=0}
+  if(s==3){if(S.fmt==="")return;if(S.fmt===3){S.step=5;return renderQuiz()}}if(s==4&&S.budget==="")return;S.step++;renderQuiz()};
+ if(s)$("#qb").onclick=()=>{S.step--;renderQuiz()}}
+function result(q){const t=tt(),R=rec();let h;
+ if(R.k=="photo")h=`<div class="res"><p>${t.photoOnly}</p></div>`;else if(R.k=="low")h=`<div class="res"><p>${t.lowPool}</p></div>`;
+ else h=`<div class="res"><p>${t.rec}: <b>${tf(R.r).n} (${R.r.price?usd(R.r.price):t.priceTBD})</b></p><p>${tf(R.r).s}</p>${R.u?`<p>${t.up} <b>${tf(R.u).n} (${usd(R.u.price)})</b></p>`:""}${R.arch?`<p>${t.archUp}</p>`:""}</div>`;
+ h+=`<button class="btn o" id="qb" style="color:#fff">${t.back}</button> `+(R.k=="low"?`<button class="btn" id="qbeach">${t.showBeach}</button> <button class="btn o" id="qs" style="color:#fff">${t.discuss}</button>`:`<button class="btn" id="qs">${t.send}</button>`);
+ q.innerHTML=h;$("#qb").onclick=()=>{S.step=S.fmt===3?3:4;renderQuiz()};
+ if(R.k=="low")$("#qbeach").onclick=()=>{setLoc("beach");S.step=4;renderQuiz()};
+ $("#qs").onclick=()=>{if(R.k=="ok"){S.tariff=R.r.id;if(R.arch&&!S.addons.includes("archdeco"))S.addons.push("archdeco")}else S.tariff="";prune();refresh();location.hash="#final";postLead()}}
+/* ---- заявка ---- */
+function lead(){const t=tt(),f=S.fmt!==""?t.fm[S.fmt]+(S.fmt===3?" (цена уточняется)":""):(S.fmtRaw||"—"),b=S.budget!==""?t.bd[S.loc][S.budget]:(S.budgetRaw||"—");
+ return `Привет! / Hi! ${S.name?S.name+". ":""}\nЛокация/Location: ${t.loc[S.loc=="pool"?1:0]}\nДата/Date: ${S.date||"—"}\nГостей/Guests: ${S.guests||"—"}\nФормат/Format: ${f}\nТариф/Package: ${S.tariff?tn(S.tariff):"—"}\nДопы/Extras: ${S.addons.length?sums().names:"—"}\nБюджет/Budget: ${b}${S.contact?"\nКонтакт/Contact: "+S.contact:""}`}
 function links(){const m=encodeURIComponent(lead());return[["Telegram",`https://t.me/${CONFIG.contacts.tgUser}?text=${m}`],["WhatsApp",`https://wa.me/${CONFIG.contacts.wa}?text=${m}`],["Zalo",CONFIG.contacts.zalo]].filter(l=>l[1])}
-function summary(){$("#summ").innerHTML=(S.tariff?tt().sel+" <b>"+tf(CONFIG.tariffs.find(x=>x.id==S.tariff)).n+"</b> · ":"")+(S.date||"");
+function summary(){const t=tt();$("#summ").textContent=[t.loc[S.loc=="pool"?1:0],S.tariff?tn(S.tariff):"",S.addons.length?sums().names:"",S.date].filter(Boolean).join(" · ");
  $("#finB").innerHTML=links().map(l=>`<a class="btn" target="_blank" rel="noopener" href="${l[1]}" data-copy>${l[0]}</a>`).join("")}
-function postLead(){if(CONFIG.endpoint==="FORM_ENDPOINT")return;fetch(CONFIG.endpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({...S,text:lead()})}).catch(()=>{})}
-document.addEventListener("click",e=>{const g=e.target.closest("[data-l],[data-t],[data-o],[data-f],[data-d],[data-copy]");if(!g)return;const d=g.dataset;
- if(d.l){L=d.l;localStorage.setItem("l",L);render()}
- else if(d.t){S.tariff=d.t;summary();location.hash="#final"}
- else if(d.o!==undefined){S[S.step==2?"fmt":"budget"]=+d.o;renderQuiz()}
+function postLead(){if(CONFIG.endpoint==="FORM_ENDPOINT")return;fetch(CONFIG.endpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({location:S.loc,date:S.date,guests:S.guests,format:S.fmt,budget:S.budget,tariff:S.tariff,addons:S.addons,contact:S.contact,text:lead()})}).catch(()=>{})}
+document.addEventListener("click",e=>{const g=e.target.closest("[data-l],[data-lc],[data-t],[data-o],[data-f],[data-d],[data-a],[data-copy]");if(!g)return;const d=g.dataset;
+ if(d.l){L=d.l;try{localStorage.setItem("l",L)}catch(x){}render()}
+ else if(d.lc){if(d.lc!=S.loc)setLoc(d.lc)}
+ else if(d.t){S.tariff=d.t;prune();refresh();location.hash="#addons"}
+ else if(d.o!==undefined){if(S.step==0)setLoc(["beach","pool"][+d.o]);else{S[S.step==3?"fmt":"budget"]=+d.o;renderQuiz()}}
  else if(d.f){pf=d.f;renderPort()}
  else if(d.d){S.date=d.d;renderCal();summary()}
+ else if(d.a){const a=ADD(d.a);if(av(a)!="ok")return;const i=S.addons.indexOf(a.id);i<0?S.addons.push(a.id):S.addons.splice(i,1);renderAddons();renderSticky();summary()}
  else if(g.hasAttribute("data-copy")){navigator.clipboard&&navigator.clipboard.writeText(lead()).catch(()=>{});postLead()}});
-/* ---- чат-бот: без токенов, только клиентская логика ---- */
-let mode="",li=0;const keys=["name","date","guests","fmt","tariff","budget","contact"];
-const add=(t,u)=>{const m=document.createElement("div");m.className="m"+(u?" u":"");m.textContent=t;$("#msgs").append(m);m.scrollIntoView()};
-function qr(){$("#qr").innerHTML=tt().b.qs.map(q=>`<button>${q}</button>`).join("");}
-function ask(){if(li<keys.length)add(tt().b.lead[li]);else{add(tt().b.done);const a=document.createElement("div");a.className="m";a.innerHTML=links().map(l=>`<a href="${l[1]}" target="_blank" rel="noopener" data-copy>${l[0]}</a>`).join(" · ");$("#msgs").append(a);postLead();summary();mode=""}}
-function answer(x){const b=tt().b,v=x.toLowerCase(),P=CONFIG.tariffs.filter(t=>t.price);
+/* ---- бот: без токенов, только клиентская логика ---- */
+let mode="",li=0;const keys=["loc","name","date","guests","fmt","tariff","budget","contact"];
+const add=(x,u)=>{const m=document.createElement("div");m.className="m"+(u?" u":"");m.textContent=x;$("#msgs").append(m);m.scrollIntoView()};
+function qr(list){$("#qr").innerHTML=(list||[]).map(q=>`<button>${q}</button>`).join("")}
+function ask(){if(li<keys.length){add(tt().b.lead[li]);const k=keys[li];qr(k=="loc"?tt().loc:k=="fmt"?tt().fm:k=="budget"?tt().bd[S.loc]:[])}else{qr([]);add(tt().b.done);const a=document.createElement("div");a.className="m";a.innerHTML=links().map(l=>`<a href="${l[1]}" target="_blank" rel="noopener" data-copy>${l[0]}</a>`).join(" · ");$("#msgs").append(a);postLead();summary();mode=""}}
+function answer(x){const b=tt().b,v=x.toLowerCase(),loc=/бассейн|pool/.test(v)?"pool":/пляж|beach/.test(v)?"beach":S.loc,P=CONFIG.tariffs.filter(t=>t.price&&t.loc==loc);
+ if(/дрон|drone|джип|jeep|фейерверк|firework|предоплат|отмен|prepay|cancel|залог|адрес|address|название|bar name|артист|artist|огнен|fire/.test(v))return b.unk;
+ if(loc=="pool"&&(v.match(/\d+/)||[0])[0]>CONFIG.poolMax)return b.unk;
+ const a=CONFIG.addons.find(a=>a.kw&&new RegExp(a.kw).test(v));if(a){if(!a.l.includes(loc))return b.notHere;const t=a.t&&a.t[loc],p=a.p&&a.p[loc];return`${a[L][0]}: ${a[L][1]} ${tt().forT} ${t?t.map(tn).join(", "):tt().all}. ${typeof p=="number"?usd(p):b.priceTbd}`}
  if(/арк|arch/.test(v))return b.arch;
- if(/стоит|цен|price|cost|how much|сколько/.test(v))return P.map(t=>tf(t).n+": $"+t.price).join("\n");
- if(/отлич|differ|compar/.test(v))return b.diff;
- if(/дожд|rain|погод|weather/.test(v)){const f=CONFIG.faq[0],a=L=="ru"?f[2]:f[3];return a[0]=="["?b.unk:a}
- if(/дат|date|свобод|avail/.test(v))return b.free();
- const t=P.find(t=>v.includes(tf(t).n.toLowerCase().split(" ")[0]));if(t&&/вход|includ|что/.test(v))return tf(t).i.join("\n");
+ if(/стоит|цен|price|cost|how much|сколько/.test(v))return P.map(t=>tf(t).n+": "+usd(t.price)).join("\n");
+ if(/отлич|differ|compar/.test(v))return b.diff[loc];
+ if(/дожд|rain|погод|weather/.test(v)){if(loc=="pool")return b.rainPool;const f=CONFIG.faq.beach[0],r=L=="ru"?f[2]:f[3];return r[0]=="["?b.unk:r}
+ if(/торт|cake|шампан|champagne|22:00|крыт|правил|rules|вместим|capacity/.test(v)||(loc=="pool"&&/гост|guest/.test(v)))return b.rules;
+ if(/дат|date|свобод|avail/.test(v))return b.dates;
+ const tr=CONFIG.tariffs.find(t=>v.includes(tf(t).n.toLowerCase().split(" ")[0])&&t.price);if(tr&&/вход|includ|что/.test(v))return b.first+"\n"+tf(tr).i.join("\n");
  return b.unk}
 function handle(x){add(x,1);
- if(mode=="lead"){const k=keys[li];S[k]=x;if(k=="tariff"){const t=CONFIG.tariffs.find(t=>tf(t).n.toLowerCase().includes(x.toLowerCase().split(" ")[0]));S.tariff=t?t.id:S.tariff}
-  if(k=="contact")S.contact=x;li++;return ask()}
+ if(mode=="lead"){const k=keys[li];
+  if(k=="loc")setLoc(/бассейн|pool/i.test(x)?"pool":"beach");
+  else if(k=="name")S.name=x;else if(k=="date")S.date=x;
+  else if(k=="guests"){S.guests=x;if(S.loc=="pool"&&(x.match(/\d+/)||[0])[0]>CONFIG.poolMax)add(tt().b.unk)}
+  else if(k=="fmt"){const i=tt().fm.findIndex(f=>f.toLowerCase()==x.toLowerCase());i>=0?S.fmt=i:S.fmtRaw=x}
+  else if(k=="tariff"){const r=CONFIG.tariffs.find(t=>t.loc==S.loc&&x.toLowerCase().includes(tf(t).n.toLowerCase().split(" ")[0]));if(r){S.tariff=r.id;prune();refresh()}}
+  else if(k=="budget"){const i=tt().bd[S.loc].findIndex(f=>f.toLowerCase()==x.toLowerCase());i>=0?S.budget=i:S.budgetRaw=x}
+  else if(k=="contact")S.contact=x;
+  li++;return ask()}
  if(/заявк|request|leave/i.test(x)){mode="lead";li=0;return ask()}
  add(answer(x))}
-$("#chatBtn").onclick=()=>{$("#chat").classList.add("open");$("#chatBtn").style.display="none";if(!$("#msgs").children.length){add(tt().b.hi);qr()}$("#ci").focus()};
+$("#chatBtn").onclick=()=>{$("#chat").classList.add("open");$("#chatBtn").style.display="none";if(!$("#msgs").children.length){add(tt().b.hi);qr(tt().b.qs)}$("#ci").focus()};
 $("#cx").onclick=()=>{$("#chat").classList.remove("open");$("#chatBtn").style.display=""};
 $("#qr").onclick=e=>{if(e.target.tagName=="BUTTON")handle(e.target.textContent)};
 $("#cf").onsubmit=e=>{e.preventDefault();const v=$("#ci").value.trim();if(v){$("#ci").value="";handle(v)}};
