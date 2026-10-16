@@ -1,13 +1,4 @@
-<!doctype html>
-<html lang="ru"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Свадебная фотосессия и церемония с аркой в Муйне</title>
-<meta name="description" content="Свадебная церемония и фотосессия в Муйне, Вьетнам: тропическая арка на берегу океана или закрытый вечер у бассейна. Рассчитайте стоимость за минуту и отправьте заявку в мессенджер.">
-<meta name="keywords" content="свадьба во Вьетнаме, свадебная церемония Муйне, свадебная фотосессия Муйне, свадьба на пляже, церемония с аркой">
-<link rel="canonical" href="https://[ДОМЕН]/"><link rel="alternate" hreflang="ru" href="https://[ДОМЕН]/"><link rel="alternate" hreflang="en" href="https://[ДОМЕН]/?lang=en">
-<meta property="og:title" content="Свадебная фотосессия и церемония с аркой в Муйне"><meta property="og:description" content="Пляж или закрытый вечер у бассейна: рассчитайте стоимость вашего дня."><meta property="og:type" content="website"><meta property="og:image" content="img/og.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Muine Wedding [НАЗВАНИЕ]","serviceType":"Свадебные церемонии и фотосессии","areaServed":{"@type":"Place","name":"Муйне, Фантьет, Вьетнам"},"description":"Свадебная церемония с аркой на пляже и закрытый вечер у бассейна в Муйне, Вьетнам."}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
++Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 <style>
 :root,body[data-loc=beach]{--bg:#FFFBF3;--bg2:#F4EADA;--card:#fff;--tx:#1B2A33;--hd:#12354A;--mut:#5b6770;--line:#e6dfd0;--ac:linear-gradient(135deg,#FFC21A,#F5841F);--acx:#B65300;--acs:#F5841F;--btx:#1B2A33;--soft:#FFF6DB;--r:18px;--sh:0px}
@@ -85,7 +76,9 @@ body[data-loc=beach] .poolonly{display:none}body[data-loc=pool] .beachonly{displ
 @media(min-width:900px){.stk{display:none}body{padding-bottom:0}}
 @media(max-width:1000px){.calc{grid-template-columns:1fr}.res{position:static}.tiles{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.hero .in{padding-bottom:140px}.hero img,.hero video{object-position:43% 8%}.hero h1{font-size:31px}.hero p{font-size:15px;margin-bottom:18px}.locg{grid-template-columns:1fr}.lc{min-height:420px}.steps{grid-template-columns:1fr 1fr}.mas{columns:2}section{padding:64px 20px}.res .big{font-size:56px}}
-@media(max-width:599px){.tiles{grid-template-columns:1fr}.q{padding:20px}}
+.dc{background:var(--card);border-radius:22px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}.dc .tb{padding:16px 18px 18px}.dc .tb h3{font-size:24px}.dc .tb p{font-size:14px;margin:0 0 8px}.dp{font-weight:700;color:var(--acx);font-size:14px}
+.dgo{align-items:center;justify-content:center;text-decoration:none;color:inherit;font-weight:700;min-height:120px;text-align:center;padding:20px;background:none;border-style:dashed}
+@media(max-width:599px){.tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;gap:14px;margin:0 -20px;padding:0 20px 8px;-webkit-overflow-scrolling:touch}.tiles .dc{flex:0 0 72%;scroll-snap-align:start}.tiles .ph3{aspect-ratio:16/10}.ph3 svg{width:44px;height:44px}.q{padding:20px}}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{scroll-behavior:auto!important;transition:none!important}}
 </style></head><body data-loc="beach">
 <nav class="top" id="topbar" aria-label="Main"><a class="brand" href="#hero">Muine Wedding</a><span class="sp"></span><div class="lt" id="lt" role="group" aria-label="Location"></div><div class="lang" id="lang" role="group" aria-label="Language"></div><a class="btn sm dk" href="#calc" data-i="cta1"></a></nav>
@@ -150,11 +143,11 @@ const CONFIG={
  ],
  /* Плитки «Детали и атмосфера»: ph (фото по локации), tmp (временное фото), ic (иконка если фото нет) */
  tiles:[
- {id:"arch",ic:"arch",ph:{beach:"img/arch-eucalyptus.jpg",pool:"img/pool-flowers.jpg"},tmp:{pool:true},ru:["Арка и цветы","Авторская арка: живые цветы, пампасная трава, лёгкие ткани, бохо."],en:["Arch and flowers","A signature arch: live flowers, pampas grass, light fabrics, boho."]},
- {id:"light",ic:"candle",ph:{},ru:["Свет и свечи","Тёплый свет в зоне церемонии на закате и вечером."],en:["Light and candles","Warm light in the ceremony area at sunset and in the evening."]},
+ {id:"arch",ic:"arch",ph:{beach:"img/arch-eucalyptus.jpg",pool:"img/pool-flowers.jpg"},tmp:{pool:true},ru:["Арка и цветы","Живые цветы, пампасная трава и лёгкие ткани. Цена зависит от набора цветов."],en:["Arch and flowers","Live flowers, pampas grass, light fabrics. The price depends on the flowers."]},
+ {id:"light",ic:"candle",ph:{},ru:["Свет и свечи","Гирлянды и свечи для тёплого света на закате и вечером."],en:["Light and candles","Warm light in the ceremony area at sunset and in the evening."]},
  {id:"dinner",ic:"dinner",ph:{beach:"img/champagne-pour.jpg"},loc:["beach"],ru:["Ужин для двоих","Приватный ужин на пляже, только для вас."],en:["Dinner for two","A private beach dinner just for the two of you."]},
  {id:"music",ic:"music",ph:{},ru:["Живая музыка","Музыкант на момент клятв."],en:["Live music","A musician for the moment of your vows."]},
- {id:"media",ic:"video",ph:{beach:"img/rings-hands.jpg",pool:"img/rings-hands.jpg"},ru:["Фото и видео","Видеоролик и короткие вертикальные ролики в день съёмки."],en:["Photo and video","A video film and short vertical clips on the shoot day."]}
+ {id:"media",ic:"video",ph:{beach:"img/rings-hands.jpg",pool:"img/rings-hands.jpg"},ru:["Фото и видео","Один ролик до 1 минуты: Reels или Shorts для соцсетей."],en:["Photo and video","One clip up to 1 minute: Reels or Shorts for social media."]}
  ],
  /* Допы: tile; l=локации; p=цена $ (нет = [ЦЕНА]); from=«от»; t=только для тарифов; x=уже входит в тарифы; h=скрыть на тарифах; req=нужен другой доп; note=пояснение */
  addons:[
@@ -163,8 +156,7 @@ const CONFIG={
  {id:"backlight",tile:"arch",l:["pool"],p:70,req:"archdeco",kw:"подсветк|backlight",ru:["Подсветка арки","Для вечерней арки; не входит в арку, докупается отдельно"],en:["Arch lighting","For an evening arch; not included in the arch, bought separately"]},
  {id:"dinner",tile:"dinner",l:["beach"],p:200,kw:"ужин|dinner",ru:["Романтический ужин на двоих","Рыба или мясо из ресторана, фрукты, шампанское"],en:["Romantic dinner for two","Fish or meat from a restaurant, fruit, champagne"]},
  {id:"live",tile:"music",l:["beach","pool"],p:{pool:250},h:["night"],kw:"живая музык|гитар|скрип|live music|guitar|violin",ru:["Живая музыка, 1 час","Гитара или скрипка. [ПОДТВЕРДИТЬ цену и формат]"],en:["Live music, 1 hour","Guitar or violin. [CONFIRM price and format]"]},
- {id:"video",tile:"media",l:["beach","pool"],kw:"видеоролик|видеограф|video",ru:["Видеоролик","Один ролик, готов через 7 дней после съёмки"],en:["Video film","One film, ready 7 days after the shoot"]},
- {id:"reels",tile:"media",l:["beach","pool"],p:120,h:["night"],kw:"reels|shorts|рилс",ru:["Reels / Shorts в день съёмки","Короткий вертикальный ролик"],en:["Reels / Shorts on the shoot day","A short vertical clip"]}
+ {id:"video",tile:"media",l:["beach","pool"],p:120,h:["night"],kw:"видеоролик|видеограф|видео|ролик|video|reels|shorts|рилс",ru:["Видеоролик до 1 минуты","Reels / Shorts, готов через 7 дней после съёмки"],en:["Video clip up to 1 minute","Reels / Shorts, ready 7 days after the shoot"]}
  ],
  /* Пожелания, которые определяют тариф */
  twish:[
@@ -192,7 +184,7 @@ wishH:"Отметьте всё, что хотите добавить",tw:{stylis
 dateL:"Дата",calOpen:"Открыть календарь дат",distT:"Где проходит съёмка?",dist:["В Муйне и рядом (до 20 км)","Дальше 20 км от Муйне"],nameL:"Имя",contactL:"Ваш контакт (мессенджер или телефон)",
 resT:"Предварительная стоимость",from:"от",rec:"Вам подойдёт",other:"Другой тариф:",inc:"Что входит",included:"входит",tbd:"уточняется",credit:"Бюджет допов «Комфорта»",extraG:"Дополнительные гости",farN:"Выезд дальше 20 км",photoL:"Фотосессия",
 prepay:"Предоплата",disc:"Это предварительный расчёт «от». Окончательную стоимость подтвердим после обсуждения деталей.",sendReq:"Отправить заявку",photoNote:"Фотосессия без церемонии. На бассейне такая съёмка обсуждается индивидуально.",cmp:"Сравнить тарифы",cmpH:["Тариф","Цена","Кратко"],
-detT:"Детали и атмосфера",detS:"Отметьте нужное: выбор сразу попадёт в расчёт стоимости.",detSc:" В «Комфорт» бюджет на допы уже заложен.",forT:"Для тарифов:",all:"все тарифы",incl:"Уже входит в ваш тариф",needArch:"Сначала выберите арку",priceTBD:"[ЦЕНА]",priceOn:"цена по запросу",
+detT:"Детали и атмосфера",detS:"Из чего складывается атмосфера. Отметить нужное можно в калькуляторе.",goCalc:"Выбрать в калькуляторе ↑",forT:"Для тарифов:",all:"все тарифы",incl:"Уже входит в ваш тариф",needArch:"Сначала выберите арку",priceTBD:"[ЦЕНА]",priceOn:"цена по запросу",
 howT:"Как это работает",steps:["Вы оставляете заявку с датой и пожеланиями","Мы подтверждаем дату и согласуем детали","Вносите предоплату 30%, мы бронируем подрядчиков","В день церемонии вы только наслаждаетесь"],
 flowT:"Как проходит вечер",flow:["Сбор и welcome drink","Церемония на закате","Фотосессия у воды","Ужин","Тосты, первый танец, торт","DJ","Финал до 22:00"],sunN:"Время церемонии подставляем по закату на вашу дату.",
 portT:"Портфолио",filt:{all:"Все",beach:"Пляж",pool:"Бассейн",arch:"Арки"},revT:"Отзывы",faqT:"Вопросы и ответы",
@@ -210,7 +202,7 @@ wishH:"Tick everything you want to add",tw:{stylist:"Bridal makeup and hair (inc
 dateL:"Date",calOpen:"Open the date calendar",distT:"Where is the shoot?",dist:["In Mui Ne or nearby (up to 20 km)","More than 20 km from Mui Ne"],nameL:"Name",contactL:"Your contact (messenger or phone)",
 resT:"Preliminary price",from:"from",rec:"Best fit",other:"Another package:",inc:"What's included",included:"included",tbd:"TBC",credit:"Comfort extras budget",extraG:"Extra guests",farN:"Trip beyond 20 km",photoL:"Photo shoot",
 prepay:"Prepayment",disc:"This is a preliminary \"from\" estimate. We confirm the final price after discussing the details.",sendReq:"Send request",photoNote:"A photo shoot without a ceremony. At the pool such a shoot is discussed individually.",cmp:"Compare packages",cmpH:["Package","Price","In short"],
-detT:"Details & Atmosphere",detS:"Tick what you need: your choice goes straight into the price estimate.",detSc:" Comfort already includes an extras budget.",forT:"For packages:",all:"all packages",incl:"Already included in your package",needArch:"Choose the arch first",priceTBD:"[PRICE]",priceOn:"price on request",
+detT:"Details & Atmosphere",detS:"What shapes the atmosphere. You can tick what you need in the calculator.",goCalc:"Choose in the calculator ↑",forT:"For packages:",all:"all packages",incl:"Already included in your package",needArch:"Choose the arch first",priceTBD:"[PRICE]",priceOn:"price on request",
 howT:"How it works",steps:["You send a request with date and wishes","We confirm the date and details","You pay a 30% prepayment, we book vendors","On the day you just enjoy it"],
 flowT:"How the evening goes",flow:["Gathering and welcome drink","Ceremony at sunset","Photo session by the water","Dinner","Toasts, first dance, cake","DJ","Finale until 22:00"],sunN:"We set the ceremony time by the sunset on your date.",
 portT:"Portfolio",filt:{all:"All",beach:"Beach",pool:"Pool",arch:"Arches"},revT:"Reviews",faqT:"Questions and answers",
@@ -269,9 +261,9 @@ function renderRes(R){const t=tt(),el=$("#res");if(R.over){el.innerHTML=`<h3>${t
  h+=R.lines.map(l=>`<div class="ln"><span>${l.n}</span><span>${lv(l)}</span></div>`).join("")+`<div class="ln t"><span>${t.prepay} ${CONFIG.prepayPct}%</span><span>${t.from} ${usd(R.prepay)}</span></div>`;
  if(!R.photo){const d=tf(TAR(R.k));h+=`<details><summary>${t.inc}</summary>${d.m?`<p class="sl">${d.m}</p>`:""}${d.a?`<p class="sl">${d.a}</p>`:""}<ul>${d.i.map(i=>`<li>${i}</li>`).join("")}</ul></details>`}
  h+=`<p class="dis">${t.disc}</p><a class="btn" href="#req">${t.sendReq}</a>`;el.innerHTML=h}
-function renderTiles(R){const t=tt(),k=R.k||LT()[0].id;$("#detS").textContent=t.detS+(S.loc=="beach"?t.detSc:"");
- $("#tiles").innerHTML=CONFIG.tiles.filter(x=>!x.loc||x.loc.includes(S.loc)).map(x=>{const items=CONFIG.addons.filter(a=>a.tile==x.id&&ast(a,k)!="hide"||(a.tile==x.id&&a.l.includes(S.loc)&&ast(a,k)=="need"));if(!items.length)return"";const src=x.ph[S.loc];
-  return`<article class="tile"><div class="ph3">${src?`<img src="${src}" alt="" loading="lazy" onerror="this.remove()">`:""}<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[x.ic]}</svg>${x.tmp&&x.tmp[S.loc]?`<span class="tmp">${t.temp}</span>`:""}</div><div class="tb"><h3>${x[L][0]}</h3><p>${x[L][1]}</p>${items.map(a=>{const st=ast(a,k),p=pr(a),on=S.addons.includes(a.id),off=st!="ok";return`<button class="opt ${on&&!off?"on":""} ${off?"off":""}" data-a="${a.id}" aria-pressed="${on}" ${off?'aria-disabled="true"':""}><span class="ck"></span><span class="nm">${a[L][0]}<small>${st=="need"?t.needArch:a[L][1]}</small></span><span class="pr">${st=="inc"?t.included:p==null?t.priceOn:(a.from?t.from+" +":"+")+usd(p)}</span></button>`}).join("")}</div></article>`}).join("")}
+function renderTiles(R){const t=tt();$("#detS").textContent=t.detS;
+ $("#tiles").innerHTML=CONFIG.tiles.filter(x=>!x.loc||x.loc.includes(S.loc)).map(x=>{const items=CONFIG.addons.filter(a=>a.tile==x.id&&a.l.includes(S.loc));if(!items.length)return"";const ps=items.map(pr).filter(v=>v!=null),mn=ps.length?Math.min(...ps):null,fr=items.some(a=>a.from),src=x.ph[S.loc];
+  return`<article class="dc"><div class="ph3">${src?`<img src="${src}" alt="" loading="lazy" onerror="this.remove()">`:""}<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[x.ic]}</svg>${x.tmp&&x.tmp[S.loc]?`<span class="tmp">${t.temp}</span>`:""}</div><div class="tb"><h3>${x[L][0]}</h3><p>${x[L][1]}</p>${mn!=null?`<span class="dp">${fr?t.from+" ":""}+${usd(mn)}</span>`:""}</div></article>`}).join("")+`<a class="dc dgo" href="#calc"><span>${t.goCalc}</span></a>`}
 function renderCmp(){const t=tt();$("#cmpT").innerHTML=`<table><tr>${t.cmpH.map(h=>`<th>${h}</th>`).join("")}</tr>${LT().map(x=>`<tr><td><b>${tf(x).n}</b></td><td>${usd(x.price)}</td><td>${tf(x).m||tf(x).s}</td></tr>`).join("")}</table>`}
 function renderSticky(R){const t=tt();$("#stkI").textContent=R.over?t.over9:`${t.from} ${usd(R.total)}${R.k?" · "+tn(R.k):""}`;$("#stkB").textContent=t.sendReq;
  setTimeout(()=>document.documentElement.style.setProperty("--sh",($("#stk").offsetHeight||0)+"px"),0)}
