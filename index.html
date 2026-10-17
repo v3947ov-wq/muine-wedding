@@ -84,10 +84,11 @@ body[data-loc=beach] .poolonly{display:none}body[data-loc=pool] .beachonly{displ
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
 @media(min-width:900px){.stk{display:none}body{padding-bottom:0}}
 @media(max-width:1000px){.calc{grid-template-columns:1fr}.res{position:static}.tiles{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.hero{flex-direction:column;justify-content:flex-start;align-items:stretch;min-height:100svh}body.inhero #chatBtn{display:none}.hero picture{display:block;position:relative;flex:none;height:56svh;min-height:320px}.hero img{object-position:50% 14%}.hero video{display:none}.hero:after{inset:0 0 auto 0;height:max(56svh,320px);background:linear-gradient(180deg,#0b1e2b88,#0b1e2b00 22%,#0b1e2b00 62%,#12354A 100%)}.hero .in{padding:6px 20px 40px}}
 @media(max-width:760px){.hero .in{padding-bottom:140px}.hero img,.hero video{object-position:50% 22%}.hero h1{font-size:31px}.hero p{font-size:15px;margin-bottom:18px}.locg{grid-template-columns:1fr}.lc{min-height:420px}.steps{grid-template-columns:1fr 1fr}.mas{columns:2}section{padding:64px 20px}.res .big{font-size:56px}}
 .dc{background:var(--card);border-radius:22px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}.dc .tb{padding:16px 18px 18px}.dc .tb h3{font-size:24px}.dc .tb p{font-size:14px;margin:0 0 8px}.dp{font-weight:700;color:var(--acx);font-size:14px}
-.dgo{align-items:center;justify-content:center;text-decoration:none;color:inherit;font-weight:700;min-height:120px;text-align:center;padding:20px;background:none;border-style:dashed}
-@media(max-width:599px){.tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;gap:14px;margin:0 -20px;padding:0 20px 8px;-webkit-overflow-scrolling:touch}.tiles .dc{flex:0 0 72%;scroll-snap-align:start}.tiles .ph3{aspect-ratio:16/10}.ph3 svg{width:44px;height:44px}.q{padding:20px}}
+.dgo{grid-column:1/-1;align-items:center;justify-content:center;text-decoration:none;color:inherit;font-weight:700;min-height:64px;text-align:center;padding:16px;background:none;border-style:dashed}
+@media(max-width:599px){.tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;gap:14px;margin:0 -20px;padding:0 20px 8px;-webkit-overflow-scrolling:touch}.tiles .dc{flex:0 0 72%;scroll-snap-align:start}.tiles .dgo{flex:0 0 52%;min-height:0}.tiles .ph3{aspect-ratio:16/10}.ph3 svg{width:44px;height:44px}.q{padding:20px}}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{scroll-behavior:auto!important;transition:none!important}}
 </style></head><body data-loc="beach">
 <nav class="top" id="topbar" aria-label="Main"><a class="brand" href="#hero">Muine Wedding</a><span class="sp"></span><div class="lt" id="lt" role="group" aria-label="Location"></div><div class="lang" id="lang" role="group" aria-label="Language"></div><a class="btn sm dk" href="#calc" data-i="cta1"></a></nav>
@@ -128,7 +129,7 @@ const CONFIG={
  farKm:20,                // выезд дальше 20 км от Муйне: доплата [УТОЧНИТЬ]
  comfortBudget:500,       // бюджет допов в «Комфорте»
  poolCap:{sunset:4,evening:7,night:9}, // гостей без пары по тарифам бассейна; всего с парой до 10
- media:{beachCard:"img/arch-dip.jpg",poolCard:"img/pool-bar.jpg",poolCardTemp:true}, // poolCardTemp:true показывает метку «временное фото»; поставьте false и замените файл
+ media:{beachCard:"img/arch-dip.jpg",poolCard:"img/pool-cocktail.jpg",poolCardTemp:false}, // poolCardTemp:true показывает метку «временное фото»; поставьте false и замените файл
  busy:{beach:[],pool:[]}, freeDates:{beach:[],pool:[]}, // "YYYY-MM-DD"; пока пусто, счётчик скрыт
  sunsetByMonth:Object.fromEntries([...Array(12)].map((_,i)=>[i+1,"[УТОЧНИТЬ]"])), // ориентир 17:20–17:45
  /* Тарифы. «Арка Премиум» теперь не тариф, а допуслуга «Авторская арка: от +$150» */
@@ -153,10 +154,10 @@ const CONFIG={
  /* Плитки «Детали и атмосфера»: ph (фото по локации), tmp (временное фото), ic (иконка если фото нет) */
  tiles:[
  {id:"arch",ic:"arch",ph:{beach:"img/arch-eucalyptus.jpg",pool:"img/pool-flowers.jpg"},tmp:{pool:true},ru:["Арка и цветы","Живые цветы, пампасная трава и лёгкие ткани. Цена зависит от набора цветов."],en:["Arch and flowers","Live flowers, pampas grass, light fabrics. The price depends on the flowers."]},
- {id:"light",ic:"candle",ph:{},ru:["Свет и свечи","Гирлянды и свечи для тёплого света на закате и вечером."],en:["Light and candles","Warm light in the ceremony area at sunset and in the evening."]},
+ {id:"light",ic:"candle",ph:{beach:"img/light-drape.jpg",pool:"img/light-drape.jpg"},ru:["Свет и свечи","Гирлянды и свечи для тёплого света на закате и вечером."],en:["Light and candles","Warm light in the ceremony area at sunset and in the evening."]},
  {id:"dinner",ic:"dinner",ph:{beach:"img/champagne-pour.jpg"},loc:["beach"],ru:["Ужин для двоих","Приватный ужин на пляже, только для вас."],en:["Dinner for two","A private beach dinner just for the two of you."]},
- {id:"music",ic:"music",ph:{},ru:["Живая музыка","Музыкант на момент клятв."],en:["Live music","A musician for the moment of your vows."]},
- {id:"media",ic:"video",ph:{beach:"img/rings-hands.jpg",pool:"img/rings-hands.jpg"},ru:["Фото и видео","Один ролик до 1 минуты: Reels или Shorts для соцсетей."],en:["Photo and video","One clip up to 1 minute: Reels or Shorts for social media."]}
+ {id:"music",ic:"music",ph:{pool:"img/pool-night.jpg"},ru:["Живая музыка","Музыкант на момент клятв."],en:["Live music","A musician for the moment of your vows."]},
+ {id:"media",ic:"video",ph:{beach:"img/rings-hands.jpg",pool:"img/pool-sunset.jpg"},ru:["Фото и видео","Один ролик до 1 минуты: Reels или Shorts для соцсетей."],en:["Photo and video","One clip up to 1 minute: Reels or Shorts for social media."]}
  ],
  /* Допы: tile; l=локации; p=цена $ (нет = [ЦЕНА]); from=«от»; t=только для тарифов; x=уже входит в тарифы; h=скрыть на тарифах; req=нужен другой доп; note=пояснение */
  addons:[
@@ -247,7 +248,7 @@ function render(){const t=tt(),pool=S.loc=="pool";document.documentElement.lang=
  $("#lang").innerHTML=Object.keys(T).map(k=>`<button class="${k==L?"on":""}" data-l="${k}">${k.toUpperCase()}</button>`).join("");
  $("#lt").innerHTML=["beach","pool"].map((k,i)=>`<button data-lt="${k}" class="${S.loc==k?"on":""}" aria-pressed="${S.loc==k}">${t.loc[i]}</button>`).join("");
  $("#topbar").classList.toggle("pk",S.picked);
- $("#locg").innerHTML=["beach","pool"].map((k,i)=>{const src=CONFIG.media[k=="beach"?"beachCard":"poolCard"],tmp=k=="pool"&&CONFIG.media.poolCardTemp;return`<button class="lc ${S.picked&&S.loc==k?"on":""}" data-lc="${k}"><img src="${src}" alt="" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()"><span class="cap ${tmp?"t":""}">${tmp?t.temp:"[ФОТО: "+src+"]"}</span><span class="tx"><span class="fr">${t.lc[i][1]}</span><h3>${t.lc[i][0]}</h3><p>${t.lc[i][2]}</p><span class="btn sm">${t.choose}</span></span></button>`}).join("");
+ $("#locg").innerHTML=["beach","pool"].map((k,i)=>{const src=CONFIG.media[k=="beach"?"beachCard":"poolCard"],tmp=k=="pool"&&CONFIG.media.poolCardTemp;return`<button class="lc ${S.picked&&S.loc==k?"on":""}" data-lc="${k}"><img src="${src}" alt="" loading="lazy" style="object-position:${k=="pool"?"76% 50%":"50% 50%"}" onerror="this.parentNode.classList.add('noimg');this.remove()"><span class="cap ${tmp?"t":""}">${tmp?t.temp:"[ФОТО: "+src+"]"}</span><span class="tx"><span class="fr">${t.lc[i][1]}</span><h3>${t.lc[i][0]}</h3><p>${t.lc[i][2]}</p><span class="btn sm">${t.choose}</span></span></button>`}).join("");
  $("#flowL").innerHTML=t.flow.map(f=>`<li>${f}</li>`).join("");
  const sm=/^\d{4}-\d\d/.test(S.date)?CONFIG.sunsetByMonth[+S.date.slice(5,7)]:"";$("#sunN").textContent=t.sunN+(sm&&sm[0]!="["?" ("+sm+")":"");
  $("#howG").innerHTML=t.steps.map((s,i)=>`<div><b>${i+1}</b><p>${s}</p></div>`).join("");
@@ -271,7 +272,7 @@ function renderRes(R){const t=tt(),el=$("#res");if(R.over){el.innerHTML=`<h3>${t
  if(!R.photo){const d=tf(TAR(R.k));h+=`<details><summary>${t.inc}</summary>${d.m?`<p class="sl">${d.m}</p>`:""}${d.a?`<p class="sl">${d.a}</p>`:""}<ul>${d.i.map(i=>`<li>${i}</li>`).join("")}</ul></details>`}
  h+=`<p class="dis">${t.disc}</p><a class="btn" href="#req">${t.sendReq}</a>`;el.innerHTML=h}
 function renderTiles(R){const t=tt();$("#detS").textContent=t.detS;
- $("#tiles").innerHTML=CONFIG.tiles.filter(x=>!x.loc||x.loc.includes(S.loc)).map(x=>{const items=CONFIG.addons.filter(a=>a.tile==x.id&&a.l.includes(S.loc));if(!items.length)return"";const ps=items.map(pr).filter(v=>v!=null),mn=ps.length?Math.min(...ps):null,fr=items.some(a=>a.from),src=x.ph[S.loc];
+ $("#tiles").innerHTML=CONFIG.tiles.filter(x=>!x.loc||x.loc.includes(S.loc)).map(x=>{const items=CONFIG.addons.filter(a=>a.tile==x.id&&a.l.includes(S.loc));if(!items.length)return"";const ps=items.filter(a=>!a.req).map(pr).filter(v=>v!=null),mn=ps.length?Math.min(...ps):null,fr=items.some(a=>a.from),src=x.ph[S.loc];
   return`<article class="dc"><div class="ph3">${src?`<img src="${src}" alt="" loading="lazy" onerror="this.remove()">`:""}<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[x.ic]}</svg>${x.tmp&&x.tmp[S.loc]?`<span class="tmp">${t.temp}</span>`:""}</div><div class="tb"><h3>${x[L][0]}</h3><p>${x[L][1]}</p>${mn!=null?`<span class="dp">${fr?t.from+" ":""}+${usd(mn)}</span>`:""}</div></article>`}).join("")+`<a class="dc dgo" href="#calc"><span>${t.goCalc}</span></a>`}
 function renderCmp(){const t=tt();$("#cmpT").innerHTML=`<table><tr>${t.cmpH.map(h=>`<th>${h}</th>`).join("")}</tr>${LT().map(x=>`<tr><td><b>${tf(x).n}</b></td><td>${usd(x.price)}</td><td>${tf(x).m||tf(x).s}</td></tr>`).join("")}</table>`}
 function renderSticky(R){const t=tt();$("#stkI").textContent=R.over?t.over9:`${t.from} ${usd(R.total)}${R.k?" · "+tn(R.k):""}`;$("#stkB").textContent=t.sendReq;
