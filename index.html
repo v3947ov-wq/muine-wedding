@@ -148,7 +148,7 @@ const CONFIG={
  farKm:20,                // выезд дальше 20 км от Муйне: доплата [УТОЧНИТЬ]
  comfortBudget:500,       // бюджет допов в «Комфорте»
  poolCap:{sunset:4,evening:7,night:9}, // гостей без пары по тарифам бассейна; всего с парой до 10
- media:{beachCard:"img/arch-dip.jpg",poolCard:"img/pool-sunset.jpg",poolCardTemp:false}, // poolCardTemp:true показывает метку «временное фото»; поставьте false и замените файл
+ media:{beachCard:"img/arch-dip.jpg",poolCard:"img/pool-card.jpg",poolCardTemp:false}, // poolCardTemp:true показывает метку «временное фото»; поставьте false и замените файл
  busy:{beach:[],pool:[]}, freeDates:{beach:[],pool:[]}, // "YYYY-MM-DD"; пока пусто, счётчик скрыт
  sunsetByMonth:{1:"17:35",2:"17:55",3:"18:00",4:"17:55",5:"17:55",6:"18:00",7:"18:05",8:"17:55",9:"17:35",10:"17:15",11:"17:10",12:"17:20"}, // ориентир 17:20–17:45
  /* Тарифы. «Арка Премиум» теперь не тариф, а допуслуга «Авторская арка: от +$150» */
@@ -291,7 +291,7 @@ function render(){const t=tt(),pool=S.loc=="pool";document.documentElement.lang=
  $("#lang").innerHTML=Object.keys(T).map(k=>`<button class="${k==L?"on":""}" data-l="${k}">${k.toUpperCase()}</button>`).join("");
  $("#lt").innerHTML=["beach","pool"].map((k,i)=>`<button data-lt="${k}" class="${S.loc==k?"on":""}" aria-pressed="${S.loc==k}">${t.loc[i]}</button>`).join("");
  $("#topbar").classList.toggle("pk",S.picked);
- $("#locg").innerHTML=["beach","pool"].map((k,i)=>{const src=CONFIG.media[k=="beach"?"beachCard":"poolCard"],tmp=k=="pool"&&CONFIG.media.poolCardTemp;return`<button class="lc ${S.picked&&S.loc==k?"on":""}" data-lc="${k}"><img src="${src}" alt="" loading="lazy" style="object-position:${k=="pool"?"76% 50%":"50% 50%"}" onerror="this.parentNode.classList.add('noimg');this.remove()"><span class="cap ${tmp?"t":""}">${tmp?t.temp:"[ФОТО: "+src+"]"}</span><span class="tx"><span class="fr">${t.lc[i][1]}</span><h3>${t.lc[i][0]}</h3><p>${t.lc[i][2]}</p><span class="btn sm">${t.choose}</span></span></button>`}).join("");
+ $("#locg").innerHTML=["beach","pool"].map((k,i)=>{const src=CONFIG.media[k=="beach"?"beachCard":"poolCard"],tmp=k=="pool"&&CONFIG.media.poolCardTemp;return`<button class="lc ${S.picked&&S.loc==k?"on":""}" data-lc="${k}"><img src="${src}" alt="" loading="lazy" style="object-position:${k=="pool"?"50% 45%":"50% 50%"}" onerror="this.parentNode.classList.add('noimg');this.remove()"><span class="cap ${tmp?"t":""}">${tmp?t.temp:"[ФОТО: "+src+"]"}</span><span class="tx"><span class="fr">${t.lc[i][1]}</span><h3>${t.lc[i][0]}</h3><p>${t.lc[i][2]}</p><span class="btn sm">${t.choose}</span></span></button>`}).join("");
  $("#flowL").innerHTML=t.flow.map(f=>`<li>${f}</li>`).join("");
  const sm=/^\d{4}-\d\d/.test(S.date)?CONFIG.sunsetByMonth[+S.date.slice(5,7)]:"";$("#sunN").textContent=t.sunN+(sm&&sm[0]!="["?" ("+(L=="ru"?"закат около ":"sunset around ")+sm+")":"");
  $("#howG").innerHTML=t.steps.map((s,i)=>`<div><b>${i+1}</b><p>${s}</p></div>`).join("");
