@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://svadbavmuine.com/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://svadbavmuine.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svadbavmuine.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://svadbavmuine.com/"/>
+    <image:image><image:loc>https://svadbavmuine.com/img/hero.jpg</image:loc><image:title>Свадебная церемония на пляже в Муйне</image:title></image:image>
+    <image:image><image:loc>https://svadbavmuine.com/img/arch-eucalyptus.jpg</image:loc><image:title>Эвкалипт и цветочная арка</image:title></image:image>
+    <image:image><image:loc>https://svadbavmuine.com/img/sand-ceremony.jpg</image:loc><image:title>Песочная церемония</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://svadbavmuine.com/?lang=en</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://svadbavmuine.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://svadbavmuine.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://svadbavmuine.com/"/>
+  </url>
+</urlset>
