@@ -20,4 +20,34 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://svadbavmuine.com/?lang=en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://svadbavmuine.com/"/>
   </url>
+  <url>
+    <loc>https://svadbavmuine.com/svadba-vo-vietname/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svadbavmuine.com/simvolicheskaya-svadba/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svadbavmuine.com/vecher-u-bassejna/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svadbavmuine.com/svadba-fantiet/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svadbavmuine.com/ceny/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
