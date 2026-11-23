@@ -283,6 +283,9 @@ rainPool:"There is a covered area at the pool in case of rain.",rules:"Pool: up 
 };
 /* ============ ЛОГИКА ============ */
 const goal=n=>{try{window.ym&&ym(114048494,"reachGoal",n)}catch(e){}};
+/* источник визита: utm-метки (или сайт-реферер) — уходят в текст заявки, чтобы было видно, какая реклама привела клиента */
+const SRC=(()=>{try{const p=new URLSearchParams(location.search),u=["utm_source","utm_campaign","utm_content"].map(k=>p.get(k)).filter(Boolean).join("/");if(u){sessionStorage.setItem("src",u);return u}const r=document.referrer;return sessionStorage.getItem("src")||(r&&!r.includes(location.host)?new URL(r).hostname.replace(/^www\./,""):"")}catch(e){return ""}})();
+const sent1=new Set(),goal1=n=>{if(!sent1.has(n)){sent1.add(n);goal(n)}};
 document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest("a[href]");if(!a)return;const h=a.href||"";if(/t\.me\//.test(h))goal("tg_click");else if(/wa\.me\//.test(h))goal("wa_click");else if(/kartashow\.ru/.test(h))goal("kartashow_click");else if(a.id=="stkB"||a.getAttribute("href")=="#req")goal("cta_click")});
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 let L="ru";try{L=new URLSearchParams(location.search).get("lang")||localStorage.getItem("l")||"ru"}catch(e){}if(!T[L])L="ru";
@@ -351,14 +354,14 @@ function renderCal(){let h="";const t=new Date(),bz=CONFIG.busy[S.loc],fz=CONFIG
 /* ---- заявка ---- */
 function lead(R){R=R||calc();const t=tt(),f=t.fm[S.fmt]+(S.fmt===3?" ("+t.dur[S.dur]+")":"");
  const ad=S.addons.map(ADD).filter(a=>ast(a,R.k)=="ok").map(a=>a[L][0]).join(", ");
- return `Привет! / Hi! ${S.name?S.name+". ":""}\nЛокация/Location: ${t.loc[S.loc=="pool"?1:0]}\nДата/Date: ${S.date||"—"}\nГостей/Guests: ${S.guests||"—"}\nФормат/Format: ${f}\nТариф/Package: ${R.k?tn(R.k):"—"}\nДопы/Extras: ${ad||"—"}\nМесто/Place: ${t.dist[S.dist]}\nПредв. стоимость/Estimate: ${R.over?"—":"от "+usd(R.total)+(R.tbd?" + уточняется":"")} (предоплата ${CONFIG.prepayPct}%: от ${R.over?"—":usd(R.prepay)})${S.contact?"\nКонтакт/Contact: "+S.contact:""}`}
+ return `Привет! / Hi! ${S.name?S.name+". ":""}\nЛокация/Location: ${t.loc[S.loc=="pool"?1:0]}\nДата/Date: ${S.date||"—"}\nГостей/Guests: ${S.guests||"—"}\nФормат/Format: ${f}\nТариф/Package: ${R.k?tn(R.k):"—"}\nДопы/Extras: ${ad||"—"}\nМесто/Place: ${t.dist[S.dist]}\nПредв. стоимость/Estimate: ${R.over?"—":"от "+usd(R.total)+(R.tbd?" + уточняется":"")} (предоплата ${CONFIG.prepayPct}%: от ${R.over?"—":usd(R.prepay)})${S.contact?"\nКонтакт/Contact: "+S.contact:""}${SRC?"\nИсточник/Source: "+SRC:""}`}
 function links(R){const m=encodeURIComponent(lead(R));return[["Telegram",`https://t.me/${CONFIG.contacts.tgUser}?text=${m}`],["WhatsApp",`https://wa.me/${CONFIG.contacts.wa}?text=${m}`],["Zalo",CONFIG.contacts.zalo]].filter(l=>l[1])}
 function summary(R){R=R||calc();const t=tt();$("#summ").textContent=R.over?t.over9:[t.loc[S.loc=="pool"?1:0],R.k?tn(R.k):t.fm[S.fmt],t.from+" "+usd(R.total),S.date].filter(Boolean).join(" · ");
  $("#finB").innerHTML=links(R).map(l=>`<a class="btn" target="_blank" rel="noopener" href="${l[1]}" data-copy>${l[0]}</a>`).join("")}
-function postLead(){goal("lead_copy");if(CONFIG.endpoint==="FORM_ENDPOINT")return;const R=calc();fetch(CONFIG.endpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({location:S.loc,date:S.date,guests:S.guests,format:S.fmt,duration:S.dur,tariff:R.k,addons:S.addons,place:S.dist,estimate:R.total,prepay:R.prepay,contact:S.contact,name:S.name,text:lead(R)})}).catch(()=>{})}
-$("#fn").oninput=e=>{S.name=e.target.value;summary()};$("#fc").oninput=e=>{S.contact=e.target.value;summary()};
+function postLead(){goal("lead_copy");if(CONFIG.endpoint==="FORM_ENDPOINT")return;const R=calc();fetch(CONFIG.endpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({location:S.loc,date:S.date,guests:S.guests,format:S.fmt,duration:S.dur,tariff:R.k,addons:S.addons,place:S.dist,estimate:R.total,prepay:R.prepay,contact:S.contact,name:S.name,source:SRC,text:lead(R)})}).catch(()=>{})}
+$("#fn").oninput=e=>{S.name=e.target.value;summary()};$("#fc").oninput=e=>{S.contact=e.target.value;goal1("contact_fill");summary()};
 $("#fd").min=iso(new Date());$("#fd").oninput=e=>{S.date=e.target.value;renderCal();summary()};$("#fg").oninput=e=>{S.guests=e.target.value;S.tariff="";update()};
-document.addEventListener("click",e=>{const g=e.target.closest("[data-l],[data-lc],[data-lt],[data-lb],[data-t],[data-fm],[data-dur],[data-w],[data-dist],[data-f],[data-d],[data-a],[data-copy]");if(!g)return;const d=g.dataset;
+document.addEventListener("click",e=>{const g=e.target.closest("[data-l],[data-lc],[data-lt],[data-lb],[data-t],[data-fm],[data-dur],[data-w],[data-dist],[data-f],[data-d],[data-a],[data-copy]");if(!g)return;const d=g.dataset;if(d.d)goal1("date_pick");else if(d.lc||d.lt||d.lb||d.t||d.fm!==undefined||d.w||d.a||d.dur!==undefined)goal1("calc_start");
  if(d.l){L=d.l;try{localStorage.setItem("l",L)}catch(x){}render()}
  else if(d.lc)setLoc(d.lc,true);else if(d.lt){if(d.lt!=S.loc)setLoc(d.lt,false)}else if(d.lb)setLoc(d.lb,true)
  else if(d.t){S.tariff=d.t;update()}
